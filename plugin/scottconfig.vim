@@ -4,11 +4,6 @@
 if exists('g:disable_scott_config')
 	finish
 endif
-if exists('g:scott_config_loaded')
-	finish
-else
-	let g:scott_config_loaded = 1
-endif
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Basic
@@ -270,167 +265,168 @@ nmap <leader>s? z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugins config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-if exists(':PlugInstall')
-	let g:coc_global_extensions = scottconfig#GetCocExtensions()
 
-	call plug#begin(scottconfig#GetPlugInstallDir())
-	Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> coc#util#install() } }
-	Plug 'tpope/vim-sensible'
-	Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
-	Plug 'PhilRunninger/nerdtree-visual-selection'
-	Plug 'PhilRunninger/nerdtree-buffer-ops'
-	Plug 'scrooloose/nerdcommenter'
-	Plug 'junegunn/fzf.vim'
-	Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-	Plug 'tpope/vim-fugitive'
-	Plug 'scrooloose/syntastic'
-	Plug 'flazz/vim-colorschemes'
-	Plug 'vim-airline/vim-airline'
-	Plug 'vim-airline/vim-airline-themes'
-	Plug 'Shougo/vimproc.vim', { 'do': 'make' }
+scottconfig#InstallPlug()
 
-	" install ranger plugin when not in macvim
-	if !has('gui_macvim')
-		Plug 'francoiscabrol/ranger.vim'
-	endif
+let g:coc_global_extensions = scottconfig#GetCocExtensions()
 
-	Plug 'townk/vim-autoclose'
-	Plug 'tpope/vim-surround'
-	Plug 'itspriddle/vim-shellcheck'
-	Plug 'mbbill/undotree'
-	Plug 'eliba2/vim-node-inspect'
-	Plug 'voldikss/vim-floaterm'
-	Plug 'MattesGroeger/vim-bookmarks'
-	call plug#end()
+call plug#begin(scottconfig#GetPlugInstallDir())
+Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> coc#util#install() } }
+Plug 'tpope/vim-sensible'
+Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'PhilRunninger/nerdtree-visual-selection'
+Plug 'PhilRunninger/nerdtree-buffer-ops'
+Plug 'scrooloose/nerdcommenter'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/syntastic'
+Plug 'flazz/vim-colorschemes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
-	""" Theme
-	colorscheme molokai
-
-	""" Coc
-	augroup commands_coc
-		autocmd!
-		autocmd CursorHold * silent call CocActionAsync('highlight')
-
-		autocmd FileType typescript,javascript,css,html,sql,rust nmap <silent> g[ <Plug>(coc-diagnostic-prev)
-		autocmd FileType typescript,javascript,css,html,sql,rust nmap <silent> g] <Plug>(coc-diagnostic-next)
-		autocmd FileType typescript,javascript,css,html,sql,rust nmap <silent> gd <Plug>(coc-definition)
-		autocmd FileType typescript,javascript,css,html,sql,rust nmap <silent> gt <Plug>(coc-type-definition)
-		autocmd FileType typescript,javascript,css,html,sql,rust nmap <silent> gi <Plug>(coc-implementation)
-		autocmd FileType typescript,javascript,css,html,sql,rust nmap <silent> gr <Plug>(coc-references)
-		autocmd FileType typescript,javascript,css,html,sql,rust nmap <leader>ac <Plug>(coc-codeaction)
-		autocmd FileType typescript,javascript,css,html,sql,rust nmap <leader>qf <Plug>(coc-fix-current)
-		autocmd FileType typescript,javascript,css,html,sql,rust nmap <leader>rn <Plug>(coc-rename)
-		autocmd FileType typescript,javascript,css,html,sql,rust xmap <leader>qr <Plug>(coc-format-selected)
-		autocmd FileType typescript,javascript,css,html,sql,rust nmap <leader>qr <Plug>(coc-format-selected)
-	augroup END
-	" format current buffer.
-	command! -nargs=0 Format :call CocAction('format')
-	" fold current buffer.
-	command! -nargs=? Fold :call CocAction('fold', <f-args>)
-	" organize imports of the current buffer.
-	command! -nargs=0 OrgImp :call CocAction('runCommand', 'editor.action.organizeImport')
-
-	""" Node inspect
-	augroup commands_node_inspect
-		autocmd!
-
-		autocmd FileType typescript,javascript nnoremap <F2> :NodeInspectStart<CR>
-		autocmd FileType typescript,javascript nnoremap <F3> :NodeInspectRun<CR>
-		autocmd FileType typescript,javascript nnoremap <F4> :NodeInspectConnect("127.0.0.1:9229")<CR>
-		autocmd FileType typescript,javascript nnoremap <F5> :NodeInspectStepInto<CR>
-		autocmd FileType typescript,javascript nnoremap <F6> :NodeInspectStepOver<CR>
-		autocmd FileType typescript,javascript nnoremap <F7> :NodeInspectToggleBreakpoint<CR>
-		autocmd FileType typescript,javascript nnoremap <F8> :NodeInspectStop<CR>
-	augroup END
-
-	nnoremap <silent> K :call scottconfig#ShowDocumentation()<CR>
-
-	inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : scottconfig#CheckBackSpace() ? "\<TAB>" : coc#refresh()
-	inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-	inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
-
-	""" Jest
-	" Run jest for current project
-	command! -nargs=0 Jest :call CocAction('runCommand', 'jest.projectTest')<CR>
-	" Run jest for current file
-	command! -nargs=0 JestFile :call CocAction('runCommand', 'jest.fileTest', ['%'])<CR>
-	" Run jest for current test
-	command! -nargs=0 JestTest :call CocAction('runCommand', 'jest.singleTest')<CR>
-	" Init jest in current cwd, require global jest command exists
-	command! -nargs=0 JestInit :call CocAction('runCommand', 'jest.init')<CR>
-
-	""" Ranger
-	let g:ranger_map_keys = 0 " Disable default key mappings
-	nnoremap <silent> <leader>r :Ranger<CR>
-
-	""" Rust
-	if has('mac') || has('macunix')
-		let g:rust_clip_command = 'pbcopy'
-	else
-		let g:rust_clip_command = 'xclip -selection clipboard'
-	endif
-
-	""" NERDTree
-	let NERDTreeShowHidden=1
-	nnoremap <silent> <leader>tt :NERDTreeToggle<CR>
-	nnoremap <silent> <leader>tf :NERDTreeFocus<CR>
-	nnoremap <silent> <leader>ts :NERDTreeFind<CR>
-	nnoremap <silent> <leader>tr :NERDTreeRefreshRoot<CR>
-	" Exit Vim if NERDTree is the only window left.
-	"autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
-	" Start NERDTree when Vim starts with a directory argument.
-	autocmd StdinReadPre * let s:std_in=1
-	autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
-				\ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
-
-	""" NERDCommneter
-	let g:NERDCreateDefaultMappings = 0
-	let g:NERDSpaceDelims = 1
-	let g:NERDCompactSexyComs = 1
-	let g:NERDCommentEmptyLines = 0
-	let g:NERDTrimTrailingWhitespace = 1
-	let g:NERDToggleCheckAllLines = 1
-	nmap <leader>/ <plug>NERDCommenterToggle<CR>
-
-	""" Undotree
-	nnoremap <silent> <leader>u :UndotreeToggle<CR>
-	if has('persistent_undo')
-		execute 'set undodir=' . $HOME . '/.undodir'
-		set undofile
-	endif
-
-	""" FZF
-	nnoremap <silent> <C-f> :Files<CR>
-	nnoremap <silent> <leader>f :Rg<CR>
-	let g:fzf_action = {
-				\ 'ctrl-t': 'tab split',
-				\ 'ctrl-s': 'split',
-				\ 'ctrl-v': 'vsplit'
-				\}
-
-	""" Syntastic
-	let g:syntastic_always_populate_loc_list = 1
-	let g:syntastic_auto_loc_list = 1
-	let g:syntastic_check_on_open = 1
-	let g:syntastic_check_on_wq = 0
-
-	""" Floaterm
-	nnoremap   <silent>   <F9>     :FloatermPrev<CR>
-	tnoremap   <silent>   <F9>     <C-\><C-n>:FloatermPrev<CR>
-	nnoremap   <silent>   <F10>    :FloatermNext<CR>
-	tnoremap   <silent>   <F10>    <C-\><C-n>:FloatermNext<CR>
-	nnoremap   <silent>   <F11>    :FloatermNew<CR>
-	tnoremap   <silent>   <F11>    <C-\><C-n>:FloatermNew<CR>
-	nnoremap   <silent>   <F12>   :FloatermToggle<CR>
-	tnoremap   <silent>   <F12>   <C-\><C-n>:FloatermToggle<CR>
-	let g:floaterm_autoclose = 1
-
-	""" Bookmarks
-	let g:bookmark_no_default_key_mappings = 1
-	nmap <silent> mm <Plug>BookmarkToggle
-	nmap <silent> mi <Plug>BookmarkAnnotate
-	nmap <silent> m] <Plug>BookmarkNext
-	nmap <silent> m[ <Plug>BookmarkPrev
-	nmap <silent> ma <Plug>BookmarkShowAll
-	nmap <silent> mx <Plug>BookmarkClearAll
+" install ranger plugin when not in macvim
+if !has('gui_macvim')
+	Plug 'francoiscabrol/ranger.vim'
 endif
+
+Plug 'townk/vim-autoclose'
+Plug 'tpope/vim-surround'
+Plug 'itspriddle/vim-shellcheck'
+Plug 'mbbill/undotree'
+Plug 'eliba2/vim-node-inspect'
+Plug 'voldikss/vim-floaterm'
+Plug 'MattesGroeger/vim-bookmarks'
+call plug#end()
+
+""" Theme
+colorscheme molokai
+
+""" Coc
+augroup commands_coc
+	autocmd!
+	autocmd CursorHold * silent call CocActionAsync('highlight')
+
+	autocmd FileType typescript,javascript,css,html,sql,rust nmap <silent> g[ <Plug>(coc-diagnostic-prev)
+	autocmd FileType typescript,javascript,css,html,sql,rust nmap <silent> g] <Plug>(coc-diagnostic-next)
+	autocmd FileType typescript,javascript,css,html,sql,rust nmap <silent> gd <Plug>(coc-definition)
+	autocmd FileType typescript,javascript,css,html,sql,rust nmap <silent> gt <Plug>(coc-type-definition)
+	autocmd FileType typescript,javascript,css,html,sql,rust nmap <silent> gi <Plug>(coc-implementation)
+	autocmd FileType typescript,javascript,css,html,sql,rust nmap <silent> gr <Plug>(coc-references)
+	autocmd FileType typescript,javascript,css,html,sql,rust nmap <leader>ac <Plug>(coc-codeaction)
+	autocmd FileType typescript,javascript,css,html,sql,rust nmap <leader>qf <Plug>(coc-fix-current)
+	autocmd FileType typescript,javascript,css,html,sql,rust nmap <leader>rn <Plug>(coc-rename)
+	autocmd FileType typescript,javascript,css,html,sql,rust xmap <leader>qr <Plug>(coc-format-selected)
+	autocmd FileType typescript,javascript,css,html,sql,rust nmap <leader>qr <Plug>(coc-format-selected)
+augroup END
+" format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+" fold current buffer.
+command! -nargs=? Fold :call CocAction('fold', <f-args>)
+" organize imports of the current buffer.
+command! -nargs=0 OrgImp :call CocAction('runCommand', 'editor.action.organizeImport')
+
+""" Node inspect
+augroup commands_node_inspect
+	autocmd!
+
+	autocmd FileType typescript,javascript nnoremap <F2> :NodeInspectStart<CR>
+	autocmd FileType typescript,javascript nnoremap <F3> :NodeInspectRun<CR>
+	autocmd FileType typescript,javascript nnoremap <F4> :NodeInspectConnect("127.0.0.1:9229")<CR>
+	autocmd FileType typescript,javascript nnoremap <F5> :NodeInspectStepInto<CR>
+	autocmd FileType typescript,javascript nnoremap <F6> :NodeInspectStepOver<CR>
+	autocmd FileType typescript,javascript nnoremap <F7> :NodeInspectToggleBreakpoint<CR>
+	autocmd FileType typescript,javascript nnoremap <F8> :NodeInspectStop<CR>
+augroup END
+
+nnoremap <silent> K :call scottconfig#ShowDocumentation()<CR>
+
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : scottconfig#CheckBackSpace() ? "\<TAB>" : coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
+
+""" Jest
+" Run jest for current project
+command! -nargs=0 Jest :call CocAction('runCommand', 'jest.projectTest')<CR>
+" Run jest for current file
+command! -nargs=0 JestFile :call CocAction('runCommand', 'jest.fileTest', ['%'])<CR>
+" Run jest for current test
+command! -nargs=0 JestTest :call CocAction('runCommand', 'jest.singleTest')<CR>
+" Init jest in current cwd, require global jest command exists
+command! -nargs=0 JestInit :call CocAction('runCommand', 'jest.init')<CR>
+
+""" Ranger
+let g:ranger_map_keys = 0 " Disable default key mappings
+nnoremap <silent> <leader>r :Ranger<CR>
+
+""" Rust
+if has('mac') || has('macunix')
+	let g:rust_clip_command = 'pbcopy'
+else
+	let g:rust_clip_command = 'xclip -selection clipboard'
+endif
+
+""" NERDTree
+let NERDTreeShowHidden=1
+nnoremap <silent> <leader>tt :NERDTreeToggle<CR>
+nnoremap <silent> <leader>tf :NERDTreeFocus<CR>
+nnoremap <silent> <leader>ts :NERDTreeFind<CR>
+nnoremap <silent> <leader>tr :NERDTreeRefreshRoot<CR>
+" Exit Vim if NERDTree is the only window left.
+"autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+" Start NERDTree when Vim starts with a directory argument.
+autocmd StdinReadPre * let s:std_in=1
+autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
+			\ execute 'NERDTree' argv()[0] | wincmd p | enew | execute 'cd '.argv()[0] | endif
+
+""" NERDCommneter
+let g:NERDCreateDefaultMappings = 0
+let g:NERDSpaceDelims = 1
+let g:NERDCompactSexyComs = 1
+let g:NERDCommentEmptyLines = 0
+let g:NERDTrimTrailingWhitespace = 1
+let g:NERDToggleCheckAllLines = 1
+nmap <leader>/ <plug>NERDCommenterToggle<CR>
+
+""" Undotree
+nnoremap <silent> <leader>u :UndotreeToggle<CR>
+if has('persistent_undo')
+	execute 'set undodir=' . $HOME . '/.undodir'
+	set undofile
+endif
+
+""" FZF
+nnoremap <silent> <C-f> :Files<CR>
+nnoremap <silent> <leader>f :Rg<CR>
+let g:fzf_action = {
+			\ 'ctrl-t': 'tab split',
+			\ 'ctrl-s': 'split',
+			\ 'ctrl-v': 'vsplit'
+			\}
+
+""" Syntastic
+let g:syntastic_always_populate_loc_list = 1
+let g:syntastic_auto_loc_list = 1
+let g:syntastic_check_on_open = 1
+let g:syntastic_check_on_wq = 0
+
+""" Floaterm
+nnoremap   <silent>   <F9>     :FloatermPrev<CR>
+tnoremap   <silent>   <F9>     <C-\><C-n>:FloatermPrev<CR>
+nnoremap   <silent>   <F10>    :FloatermNext<CR>
+tnoremap   <silent>   <F10>    <C-\><C-n>:FloatermNext<CR>
+nnoremap   <silent>   <F11>    :FloatermNew<CR>
+tnoremap   <silent>   <F11>    <C-\><C-n>:FloatermNew<CR>
+nnoremap   <silent>   <F12>   :FloatermToggle<CR>
+tnoremap   <silent>   <F12>   <C-\><C-n>:FloatermToggle<CR>
+let g:floaterm_autoclose = 1
+
+""" Bookmarks
+let g:bookmark_no_default_key_mappings = 1
+nmap <silent> mm <Plug>BookmarkToggle
+nmap <silent> mi <Plug>BookmarkAnnotate
+nmap <silent> m] <Plug>BookmarkNext
+nmap <silent> m[ <Plug>BookmarkPrev
+nmap <silent> ma <Plug>BookmarkShowAll
+nmap <silent> mx <Plug>BookmarkClearAll

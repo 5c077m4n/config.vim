@@ -1,1 +1,1 @@
-# config.vim
+# scottconfig.vim

@@ -68,3 +68,22 @@ function! scottconfig#ShowDocumentation()
 		execute '!' . &keywordprg . " " . expand('<cword>')
 	endif
 endfunction
+
+function! scottconfig#InstallPlug() abort
+	if exists(':PlugInstall')
+		return
+	endif
+
+	if has('nvim')
+		silent !curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs
+					\https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	elseif
+		silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+					\https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+	endif
+
+	" Run PlugInstall if there are missing plugins
+	autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
+				\| PlugInstall --sync | source $MYVIMRC
+				\| endif
+endfunction
