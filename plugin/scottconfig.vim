@@ -58,16 +58,8 @@ set relativenumber
 
 let mapleader = " "
 
-function! s:get_vimrc_path()
-	if has('nvim')
-		return $HOME . '/.config/nvim/init.vim'
-	else 
-		return $HOME . '/.vimrc'
-	endif
-endfunction
-
-nnoremap <expr> <leader>1 ":edit ".<SID>get_vimrc_path()."<CR>"
-nnoremap <expr> <leader>2 ":source ".<SID>get_vimrc_path()."<CR>"
+nnoremap <expr> <leader>1 ":edit ".scottconfig#GetVimConfigPath()."<CR>"
+nnoremap <expr> <leader>2 ":source ".scottconfig#GetVimConfigPath()."<CR>"
 nnoremap <silent> <leader>3 :PlugInstall<CR>
 nnoremap <silent> <leader>4 :PlugUpgrade<CR>:PlugUpdate<CR>:CocUpdate<CR>
 " Map redo to Ctrl+u
@@ -183,7 +175,7 @@ set t_vb=
 set tm=500
 
 " Properly disable sound on errors on MacVim
-if has("gui_macvim")
+if has('gui_macvim')
 	autocmd GUIEnter * set vb t_vb=
 endif
 
@@ -254,15 +246,8 @@ set wrap
 nnoremap 0 ^
 
 " Delete trailing white space on save, useful for some filetypes ;)
-fun! CleanExtraSpaces()
-	let save_cursor = getpos(".")
-	let old_query = getreg('/')
-	silent! %s/\s\+$//e
-	call setpos('.', save_cursor)
-	call setreg('/', old_query)
-endfun
 
-autocmd BufWritePre *.txt,*.js,*.ts,*.sql,*.py,*.sh, :call CleanExtraSpaces()
+autocmd BufWritePre *.txt,*.js,*.ts,*.sql,*.py,*.sh, :call scottconfig#CleanExtraSpaces()
 
 " Indentation commands
 inoremap <S-Tab> <C-d>
@@ -286,45 +271,9 @@ nmap <leader>s? z=
 " => Plugins config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 if exists(':PlugInstall')
-	function! s:get_coc_ext()
-		let l:coc_ext = ['coc-prettier']
+	let g:coc_global_extensions = scottconfig#GetCocExtensions()
 
-		if &filetype ==? 'json'
-			let l:coc_ext += ['coc-json']
-		elseif index(['ts', 'tsx', 'typescriptreact', 'js', 'jsx', 'javascriptreact'], &filetype) != -1
-			let l:coc_ext += ['coc-tsserver', 'coc-jest', 'coc-eslint', 'coc-react-refactor', 'coc-sql']
-		elseif &filetype ==? 'html'
-			let l:coc_ext += ['coc-html']
-		elseif index(['css', 'scss', 'less'], &filetype) != -1
-			let l:coc_ext += ['coc-css']
-		elseif index(['yml', 'yaml'], &filetype) != -1
-			let l:coc_ext += ['coc-yaml']
-		elseif index(['shell', 'sh'], &filetype) != -1
-			let l:coc_ext += ['coc-sh']
-		elseif &filetype ==? 'sql'
-			let l:coc_ext += ['coc-sql']
-		elseif &filetype ==? 'rust'
-			let l:coc_ext += ['coc-rust-analyzer']
-		elseif &filetype ==? 'toml'
-			let l:coc_ext += ['coc-toml']
-		endif
-
-		return l:coc_ext
-	endfunction
-
-	function! s:get_plug_install_dir() abort
-		if has('nvim')
-			return $HOME."/.config/nvim/plugged"
-		elseif has('gui_macvim')
-			return $HOME."/config/macvim/plugged"
-		else
-			return $HOME."/.vim/plugged"
-		endif
-	endfunction
-
-	let g:coc_global_extensions = <SID>get_coc_ext()
-
-	call plug#begin(<SID>get_plug_install_dir())
+	call plug#begin(scottconfig#GetPlugInstallDir())
 	Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> coc#util#install() } }
 	Plug 'tpope/vim-sensible'
 	Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
@@ -394,22 +343,9 @@ if exists(':PlugInstall')
 		autocmd FileType typescript,javascript nnoremap <F8> :NodeInspectStop<CR>
 	augroup END
 
-	function! s:show_documentation()
-		if (index(['vim', 'help'], &filetype) >= 0)
-			execute 'h '.expand('<cword>')
-		elseif (coc#rpc#ready())
-			call CocActionAsync('doHover')
-		else
-			execute '!' . &keywordprg . " " . expand('<cword>')
-		endif
-	endfunction
-	nnoremap <silent> K :call <SID>show_documentation()<CR>
+	nnoremap <silent> K :call scottconfig#ShowDocumentation()<CR>
 
-	function! s:check_back_space() abort
-		let col = col('.') - 1
-		return !col || getline('.')[col - 1]  =~# '\s'
-	endfunction
-	inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : <SID>check_back_space() ? "\<TAB>" : coc#refresh()
+	inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : scottconfig#CheckBackSpace() ? "\<TAB>" : coc#refresh()
 	inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 	inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
@@ -424,13 +360,11 @@ if exists(':PlugInstall')
 	command! -nargs=0 JestInit :call CocAction('runCommand', 'jest.init')<CR>
 
 	""" Ranger
-	if exists(':Ranger')
-		let g:ranger_map_keys = 0 " Disable default key mappings
-		nnoremap <silent> <leader>r :Ranger<CR>
-	endif
+	let g:ranger_map_keys = 0 " Disable default key mappings
+	nnoremap <silent> <leader>r :Ranger<CR>
 
 	""" Rust
-	if has("mac") || has("macunix")
+	if has('mac') || has('macunix')
 		let g:rust_clip_command = 'pbcopy'
 	else
 		let g:rust_clip_command = 'xclip -selection clipboard'
@@ -460,8 +394,8 @@ if exists(':PlugInstall')
 
 	""" Undotree
 	nnoremap <silent> <leader>u :UndotreeToggle<CR>
-	if has("persistent_undo")
-		execute 'set undodir='.$HOME.'/.undodir'
+	if has('persistent_undo')
+		execute 'set undodir=' . $HOME . '/.undodir'
 		set undofile
 	endif
 
