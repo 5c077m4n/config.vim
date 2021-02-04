@@ -1,6 +1,6 @@
 # scottconfig.vim
 
-To use:
+In order to use this plugin please add this to your vimrc file:
 
 ```vimscript
 function! s:get_plug_install_dir() abort
