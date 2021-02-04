@@ -2,7 +2,7 @@
 
 In order to use this plugin please add this to your vimrc file:
 
-```vimscript
+```vim
 function! s:get_plug_install_dir() abort
 	if has('nvim')
 		return $HOME . '/.config/nvim/plugged'
