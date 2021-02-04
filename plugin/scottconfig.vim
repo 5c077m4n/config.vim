@@ -268,7 +268,7 @@ nmap <leader>s? z=
 
 call scottconfig#InstallPlug()
 
-let g:coc_global_extensions = call scottconfig#GetCocExtensions()
+let g:coc_global_extensions = scottconfig#GetCocExtensions()
 
 """ Theme
 colorscheme molokai
