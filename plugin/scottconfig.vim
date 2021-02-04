@@ -266,9 +266,9 @@ nmap <leader>s? z=
 " => Plugins config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-scottconfig#InstallPlug()
+call scottconfig#InstallPlug()
 
-let g:coc_global_extensions = scottconfig#GetCocExtensions()
+let g:coc_global_extensions = call scottconfig#GetCocExtensions()
 
 """ Theme
 colorscheme molokai
