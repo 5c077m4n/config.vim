@@ -44,3 +44,8 @@ Plug 'MattesGroeger/vim-bookmarks'
 Plug '5c077m4n/scottconfig.vim'
 call plug#end()
 ```
+
+and to disable:
+```vim
+let g:disable_scott_config = 1
+```
