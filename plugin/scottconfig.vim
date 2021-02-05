@@ -268,10 +268,16 @@ nmap <leader>s? z=
 
 call scottconfig#InstallPlug()
 
-let g:coc_global_extensions = scottconfig#GetCocExtensions()
+nnoremap <silent> K :call scottconfig#ShowDocumentation()<CR>
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : scottconfig#CheckBackSpace() ? "\<TAB>" : coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 """ Theme
 colorscheme molokai
+
+""" Coc
+let g:coc_global_extensions = scottconfig#GetCocExtensions()
 
 """ Ranger
 let g:ranger_map_keys = 0 " Disable default key mappings
@@ -335,7 +341,7 @@ nnoremap <silent> <F10> :FloatermNext<CR>
 tnoremap <silent> <F10> <C-\><C-n>:FloatermNext<CR>
 nnoremap <silent> <F11> :FloatermNew<CR>
 tnoremap <silent> <F11> <C-\><C-n>:FloatermNew<CR>
-nnoremap <silent> <F12> FloatermToggle<CR>
+nnoremap <silent> <F12> :FloatermToggle<CR>
 tnoremap <silent> <F12> C-\><C-n>:FloatermToggle<CR>
 let g:floaterm_autoclose = 1
 
