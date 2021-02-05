@@ -128,7 +128,7 @@ set wildmenu
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
-if scottconfig#vars#is_win
+if g:scottconfig#vars#is_win
 	set wildignore+=.git\*,.hg\*,.svn\*
 else
 	set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
@@ -171,7 +171,7 @@ set t_vb=
 set tm=500
 
 " Properly disable sound on errors on MacVim
-if scottconfig#vars#is_mac
+if g:scottconfig#vars#is_mac
 	autocmd GUIEnter * set vb t_vb=
 endif
 
@@ -287,7 +287,7 @@ let g:ranger_map_keys = 0 " Disable default key mappings
 nnoremap <silent> <leader>r :Ranger<CR>
 
 """ Rust
-if scottconfig#vars#is_mac
+if g:scottconfig#vars#is_mac
 	let g:rust_clip_command = 'pbcopy'
 else
 	let g:rust_clip_command = 'xclip -selection clipboard'
