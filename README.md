@@ -5,11 +5,11 @@ In order to use this plugin please add this to your `.vimrc`/`init.vim`/`.gvimrc
 ```vim
 function! s:get_plug_install_dir() abort
 	if has('nvim')
-		return $HOME . '/.config/nvim/plugged'
+		return $HOME.'/.config/nvim/plugged'
 	elseif has('gui_macvim')
-		return $HOME . '/config/macvim/plugged'
+		return $HOME.'/config/macvim/plugged'
 	else
-		return $HOME . '/.vim/plugged'
+		return $HOME.'/.vim/plugged'
 	endif
 endfunction
 
