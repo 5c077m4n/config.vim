@@ -273,59 +273,6 @@ let g:coc_global_extensions = scottconfig#GetCocExtensions()
 """ Theme
 colorscheme molokai
 
-""" Coc
-augroup commands_coc
-	autocmd!
-	autocmd CursorHold * silent call CocActionAsync('highlight')
-
-	autocmd FileType typescript,javascript,css,html,sql,rust nmap <silent> g[ <Plug>(coc-diagnostic-prev)
-	autocmd FileType typescript,javascript,css,html,sql,rust nmap <silent> g] <Plug>(coc-diagnostic-next)
-	autocmd FileType typescript,javascript,css,html,sql,rust nmap <silent> gd <Plug>(coc-definition)
-	autocmd FileType typescript,javascript,css,html,sql,rust nmap <silent> gt <Plug>(coc-type-definition)
-	autocmd FileType typescript,javascript,css,html,sql,rust nmap <silent> gi <Plug>(coc-implementation)
-	autocmd FileType typescript,javascript,css,html,sql,rust nmap <silent> gr <Plug>(coc-references)
-	autocmd FileType typescript,javascript,css,html,sql,rust nmap <leader>ac <Plug>(coc-codeaction)
-	autocmd FileType typescript,javascript,css,html,sql,rust nmap <leader>qf <Plug>(coc-fix-current)
-	autocmd FileType typescript,javascript,css,html,sql,rust nmap <leader>rn <Plug>(coc-rename)
-	autocmd FileType typescript,javascript,css,html,sql,rust xmap <leader>qr <Plug>(coc-format-selected)
-	autocmd FileType typescript,javascript,css,html,sql,rust nmap <leader>qr <Plug>(coc-format-selected)
-augroup END
-" format current buffer.
-command! -nargs=0 Format :call CocAction('format')
-" fold current buffer.
-command! -nargs=? Fold :call CocAction('fold', <f-args>)
-" organize imports of the current buffer.
-command! -nargs=0 OrgImp :call CocAction('runCommand', 'editor.action.organizeImport')
-
-""" Node inspect
-augroup commands_node_inspect
-	autocmd!
-
-	autocmd FileType typescript,javascript nnoremap <F2> :NodeInspectStart<CR>
-	autocmd FileType typescript,javascript nnoremap <F3> :NodeInspectRun<CR>
-	autocmd FileType typescript,javascript nnoremap <F4> :NodeInspectConnect("127.0.0.1:9229")<CR>
-	autocmd FileType typescript,javascript nnoremap <F5> :NodeInspectStepInto<CR>
-	autocmd FileType typescript,javascript nnoremap <F6> :NodeInspectStepOver<CR>
-	autocmd FileType typescript,javascript nnoremap <F7> :NodeInspectToggleBreakpoint<CR>
-	autocmd FileType typescript,javascript nnoremap <F8> :NodeInspectStop<CR>
-augroup END
-
-nnoremap <silent> K :call scottconfig#ShowDocumentation()<CR>
-
-inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : scottconfig#CheckBackSpace() ? "\<TAB>" : coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
-
-""" Jest
-" Run jest for current project
-command! -nargs=0 Jest :call CocAction('runCommand', 'jest.projectTest')<CR>
-" Run jest for current file
-command! -nargs=0 JestFile :call CocAction('runCommand', 'jest.fileTest', ['%'])<CR>
-" Run jest for current test
-command! -nargs=0 JestTest :call CocAction('runCommand', 'jest.singleTest')<CR>
-" Init jest in current cwd, require global jest command exists
-command! -nargs=0 JestInit :call CocAction('runCommand', 'jest.init')<CR>
-
 """ Ranger
 let g:ranger_map_keys = 0 " Disable default key mappings
 nnoremap <silent> <leader>r :Ranger<CR>
@@ -382,14 +329,14 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 """ Floaterm
-nnoremap   <silent>   <F9>     :FloatermPrev<CR>
-tnoremap   <silent>   <F9>     <C-\><C-n>:FloatermPrev<CR>
-nnoremap   <silent>   <F10>    :FloatermNext<CR>
-tnoremap   <silent>   <F10>    <C-\><C-n>:FloatermNext<CR>
-nnoremap   <silent>   <F11>    :FloatermNew<CR>
-tnoremap   <silent>   <F11>    <C-\><C-n>:FloatermNew<CR>
-nnoremap   <silent>   <F12>   :FloatermToggle<CR>
-tnoremap   <silent>   <F12>   <C-\><C-n>:FloatermToggle<CR>
+nnoremap <silent> <F9> :FloatermPrev<CR>
+tnoremap <silent> <F9> <C-\><C-n>:FloatermPrev<CR>
+nnoremap <silent> <F10> :FloatermNext<CR>
+tnoremap <silent> <F10> <C-\><C-n>:FloatermNext<CR>
+nnoremap <silent> <F11> :FloatermNew<CR>
+tnoremap <silent> <F11> <C-\><C-n>:FloatermNew<CR>
+nnoremap <silent> <F12> FloatermToggle<CR>
+tnoremap <silent> <F12> C-\><C-n>:FloatermToggle<CR>
 let g:floaterm_autoclose = 1
 
 """ Bookmarks
