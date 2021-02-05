@@ -5,8 +5,6 @@ if exists('g:disable_scott_config')
 	finish
 endif
 
-let s:is_win = has('win32') || has('win64')
-let s:root = expand('<sfile>:h:h')
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Basic
@@ -289,7 +287,7 @@ let g:ranger_map_keys = 0 " Disable default key mappings
 nnoremap <silent> <leader>r :Ranger<CR>
 
 """ Rust
-if has('mac') || has('macunix')
+if scottconfig#vars#is_mac
 	let g:rust_clip_command = 'pbcopy'
 else
 	let g:rust_clip_command = 'xclip -selection clipboard'

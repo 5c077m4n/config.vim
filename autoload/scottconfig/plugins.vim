@@ -3,11 +3,11 @@ let s:is_nvim = has('nvim')
 let s:is_gvim = get(v:, 'progname', '') ==# 'gvim' || has('gui_macvim')
 
 function! scottconfig#plugins#GetInstallDir()
-	if s:is_nvim
+	if g:scottconfig#vars#is_nvim
 		return $HOME.'/.config/nvim/plugged'
-	elseif s:is_gvim
+	elseif g:scottconfig#vars#is_gvim
 		return $HOME.'/config/macvim/plugged'
-	elseif s:is_vim
+	elseif g:scottconfig#vars#is_vim
 		return $HOME.'/.vim/plugged'
 	else
 		echohl Error
@@ -20,12 +20,12 @@ function! scottconfig#plugins#GetInstallDir()
 endfunction
 
 function! scottconfig#plugins#InstallPlug()
-	if is_nvim
+	if g:scottconfig#vars#is_nvim
 		silent !curl -fLo
 					\ "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim
 					\ --create-dirs
 					\ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-	elseif is_vim
+	elseif g:scottconfig#vars#is_vim
 		silent !curl -fLo
 					\ ~/.vim/autoload/plug.vim
 					\ --create-dirs
