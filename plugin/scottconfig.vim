@@ -274,7 +274,7 @@ if !exists(':PlugInstall')
 endif
 
 nnoremap <silent> K :call scottconfig#utils#ShowDocumentation()<CR>
-inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : call scottconfig#utils#CheckBackSpace() ? "\<TAB>" : coc#refresh()
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : scottconfig#utils#CheckBackSpace() ? "\<TAB>" : coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 

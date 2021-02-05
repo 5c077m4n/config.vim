@@ -1,3 +1,7 @@
+let s:is_vim = !has('nvim')
+let s:is_nvim = has('nvim')
+let s:is_gvim = get(v:, 'progname', '') ==# 'gvim' || has('gui_macvim')
+
 function! scottconfig#utils#CleanExtraSpaces()
 	let save_cursor = getpos(".")
 	let old_query = getreg('/')
@@ -7,16 +11,23 @@ function! scottconfig#utils#CleanExtraSpaces()
 endfunction
 
 function! scottconfig#utils#GetVimConfigPath()
-	if has('nvim')
-		return $HOME . '/.config/nvim/init.vim'
-	elseif has('gui_macvim')
-		return $HOME . '.gvimrc'
+	if is_nvim
+		return $HOME.'/.config/nvim/init.vim'
+	elseif is_gvim
+		return $HOME.'/.gvimrc'
+	elseif is_vim
+		return $HOME.'/.vimrc'
 	else
-		return $HOME . '/.vimrc'
+		echohl Error
+		echom "This version of Vim is unsupported"
+		echohl None
+		sleep 2
+
+		return $HOME.'/.vimrc'
 	endif
 endfunction
 
-function! scottconfig#utils#CheckBackSpace() abort
+function! scottconfig#utils#CheckBackSpace()
 	let col = col('.') - 1
 	return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
