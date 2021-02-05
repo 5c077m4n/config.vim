@@ -33,7 +33,7 @@ set shortmess+=c
 
 " Always show the signcolumn, otherwise it would shift the text each time
 " diagnostics appear/become resolved.
-if has("patch-8.1.1564")
+if has('patch-8.1.1564')
   " Recently vim can merge signcolumn and number column into one
   set signcolumn=number
 else
@@ -94,7 +94,7 @@ endif
 set background=dark
 
 " Set extra options when running in GUI mode
-if has("gui_running")
+if has('gui_running')
 	set guioptions-=T
 	set guioptions-=e
 	set t_Co=256
@@ -128,7 +128,7 @@ set wildmenu
 
 " Ignore compiled files
 set wildignore=*.o,*~,*.pyc
-if has("win16") || has("win32")
+if scottconfig#vars#is_win
 	set wildignore+=.git\*,.hg\*,.svn\*
 else
 	set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
@@ -171,7 +171,7 @@ set t_vb=
 set tm=500
 
 " Properly disable sound on errors on MacVim
-if has('gui_macvim')
+if scottconfig#vars#is_mac
 	autocmd GUIEnter * set vb t_vb=
 endif
 
