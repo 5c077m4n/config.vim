@@ -1,4 +1,4 @@
-# scottconfig.vim
+# 5c077m4n's vim configuration
 
 In order to use this plugin please add this to your `.vimrc`/`init.vim`/`.gvimrc`/whatever file:
 
