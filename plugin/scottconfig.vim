@@ -41,7 +41,7 @@ endif
 
 " Make vim cwd the file that is being edited
 autocmd BufEnter * silent! lcd %:p:h
-" Add rust filetyp
+" Add rust filetype
 augroup filetype_rust
     autocmd!
     autocmd BufReadPost *.rs setlocal filetype=rust
@@ -53,8 +53,8 @@ set relativenumber
 
 let mapleader = " "
 
-nnoremap <expr> <leader>1 ":edit ".scottconfig#GetVimConfigPath()."<CR>"
-nnoremap <expr> <leader>2 ":source ".scottconfig#GetVimConfigPath()."<CR>"
+nnoremap <expr> <leader>1 ":edit ".scottconfig#utils#GetVimConfigPath()."<CR>"
+nnoremap <expr> <leader>2 ":source ".scottconfig#utils#GetVimConfigPath()."<CR>"
 nnoremap <silent> <leader>3 :PlugInstall<CR>
 nnoremap <silent> <leader>4 :PlugUpgrade<CR>:PlugUpdate<CR>:CocUpdate<CR>
 " Map redo to Ctrl+u
@@ -242,7 +242,7 @@ nnoremap 0 ^
 
 " Delete trailing white space on save, useful for some filetypes ;)
 
-autocmd BufWritePre *.txt,*.js,*.ts,*.sql,*.py,*.sh, :call scottconfig#CleanExtraSpaces()
+autocmd BufWritePre *.txt,*.js,*.ts,*.sql,*.py,*.sh, :call scottconfig#utils#CleanExtraSpaces()
 
 " Indentation commands
 inoremap <S-Tab> <C-d>
@@ -266,10 +266,12 @@ nmap <leader>s? z=
 " => Plugins config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-call scottconfig#InstallPlug()
+if !exists(':PlugInstall')
+	call scottconfig#plugins#InstallPlug()
+endif
 
-nnoremap <silent> K :call scottconfig#ShowDocumentation()<CR>
-inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : scottconfig#CheckBackSpace() ? "\<TAB>" : coc#refresh()
+nnoremap <silent> K :call scottconfig#utils#ShowDocumentation()<CR>
+inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" :call scottconfig#utils#CheckBackSpace() ? "\<TAB>" : coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
@@ -277,7 +279,7 @@ inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 colorscheme molokai
 
 """ Coc
-let g:coc_global_extensions = scottconfig#GetCocExtensions()
+let g:coc_global_extensions = scottconfig#coc#GetExtensions()
 
 """ Ranger
 let g:ranger_map_keys = 0 " Disable default key mappings
