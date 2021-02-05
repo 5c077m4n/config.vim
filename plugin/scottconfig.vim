@@ -317,7 +317,7 @@ nmap <leader>/ <plug>NERDCommenterToggle<CR>
 """ Undotree
 nnoremap <silent> <leader>u :UndotreeToggle<CR>
 if has('persistent_undo')
-	execute 'set undodir=' . $HOME . '/.undodir'
+	execute 'set undodir='.$HOME.'/.undodir'
 	set undofile
 endif
 
