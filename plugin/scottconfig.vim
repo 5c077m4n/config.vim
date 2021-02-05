@@ -344,7 +344,7 @@ tnoremap <silent> <F10> <C-\><C-n>:FloatermNext<CR>
 nnoremap <silent> <F11> :FloatermNew<CR>
 tnoremap <silent> <F11> <C-\><C-n>:FloatermNew<CR>
 nnoremap <silent> <F12> :FloatermToggle<CR>
-tnoremap <silent> <F12> C-\><C-n>:FloatermToggle<CR>
+tnoremap <silent> <F12> <C-\><C-n>:FloatermToggle<CR>
 let g:floaterm_autoclose = 1
 
 """ Bookmarks
