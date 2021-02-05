@@ -171,7 +171,7 @@ set t_vb=
 set tm=500
 
 " Properly disable sound on errors on MacVim
-if g:scottconfig#vars#is_mac
+if g:scottconfig#vars#is_gvim
 	autocmd GUIEnter * set vb t_vb=
 endif
 
