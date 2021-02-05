@@ -3,7 +3,7 @@ function! scottconfig#coc#GetExtensions()
 
 	if &filetype ==? 'json'
 		let l:coc_ext += ['coc-json']
-	elseif index(['ts', 'typescritp', 'tsx', 'typescriptreact', 'js', 'javascript', 'jsx', 'javascriptreact'], &filetype) >= 0
+	elseif index(['ts', 'typescript', 'tsx', 'typescriptreact', 'js', 'javascript', 'jsx', 'javascriptreact'], &filetype) >= 0
 		let l:coc_ext += ['coc-tsserver', 'coc-jest', 'coc-eslint', 'coc-react-refactor', 'coc-sql']
 	elseif &filetype ==? 'html'
 		let l:coc_ext += ['coc-html', 'coc-css']
