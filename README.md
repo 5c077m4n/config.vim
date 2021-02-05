@@ -1,6 +1,6 @@
 # 5c077m4n's vim configuration
 
-In order to use this plugin please add this to your `.vimrc`/`init.vim`/`.gvimrc`/whatever file:
+In order to use this plugin add this to your `.vimrc`/`init.vim`/`.gvimrc`/whatever file:
 
 ```vim
 function! s:get_plug_install_dir() abort
