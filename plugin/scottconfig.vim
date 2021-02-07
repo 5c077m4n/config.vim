@@ -243,7 +243,7 @@ nnoremap 0 ^
 
 " Delete trailing white space on save, useful for some filetypes ;)
 
-autocmd BufWritePre *.txt,*.js,*.ts,*.sql,*.py,*.sh, :call scottconfig#utils#CleanExtraSpaces()
+autocmd BufWritePre *.txt,*.js,*.jsx,*.ts,*.tsx,*.sql,*.py,*.sh, :call scottconfig#utils#CleanExtraSpaces()
 
 " Indentation commands
 inoremap <S-Tab> <C-d>
