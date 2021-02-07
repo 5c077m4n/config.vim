@@ -241,8 +241,7 @@ set wrap
 " Remap VIM 0 to first non-blank character
 nnoremap 0 ^
 
-" Delete trailing white space on save, useful for some filetypes ;)
-
+" Delete trailing white space on save
 autocmd BufWritePre *.txt,*.js,*.jsx,*.ts,*.tsx,*.sql,*.py,*.sh, :call scottconfig#utils#CleanExtraSpaces()
 
 " Indentation commands
