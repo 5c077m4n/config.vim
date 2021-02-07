@@ -315,8 +315,9 @@ let g:NERDToggleCheckAllLines = 1
 nmap <leader>/ <plug>NERDCommenterToggle<CR>
 
 """ Undotree
-nnoremap <silent> <leader>u :UndotreeToggle<CR>
 if has('persistent_undo')
+	nnoremap <silent> <leader>u :UndotreeToggle<CR>
+
 	execute 'set undodir='.$HOME.'/.undodir'
 	set undofile
 endif
