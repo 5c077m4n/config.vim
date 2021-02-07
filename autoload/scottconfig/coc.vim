@@ -11,7 +11,7 @@ function! scottconfig#coc#GetExtensions()
 		let l:coc_ext += ['coc-css']
 	elseif index(['yml', 'yaml'], &filetype) >= 0
 		let l:coc_ext += ['coc-yaml']
-	elseif index(['shell', 'sh'], &filetype) >= 0
+	elseif index(['sh', 'shell'], &filetype) >= 0
 		let l:coc_ext += ['coc-sh']
 	elseif &filetype ==? 'sql'
 		let l:coc_ext += ['coc-sql']
