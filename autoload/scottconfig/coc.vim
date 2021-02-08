@@ -1,5 +1,5 @@
 function! scottconfig#coc#GetExtensions()
-	let l:coc_ext = ['coc-prettier']
+	let l:coc_ext = ['coc-prettier', 'coc-spell-checker']
 
 	if &filetype ==? 'json'
 		let l:coc_ext += ['coc-json']
@@ -19,6 +19,8 @@ function! scottconfig#coc#GetExtensions()
 		let l:coc_ext += ['coc-rust-analyzer']
 	elseif &filetype ==? 'toml'
 		let l:coc_ext += ['coc-toml']
+	elseif &filetype ==? 'svg'
+		let l:coc_ext += ['coc-svg']
 	endif
 
 	return l:coc_ext
