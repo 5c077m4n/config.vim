@@ -41,6 +41,7 @@ Plug 'mbbill/undotree'
 Plug 'eliba2/vim-node-inspect'
 Plug 'voldikss/vim-floaterm'
 Plug 'MattesGroeger/vim-bookmarks'
+Plug 'jparise/vim-graphql'
 Plug '5c077m4n/scottconfig.vim'
 call plug#end()
 ```
