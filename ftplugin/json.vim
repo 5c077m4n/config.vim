@@ -2,3 +2,5 @@
 if !exists("b:did_ftplugin")
 	runtime! assets/coc_commands.vim
 endif
+
+syntax match Comment +\/\/.\+$+
