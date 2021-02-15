@@ -29,4 +29,4 @@ command! -nargs=0 JestTest :call CocAction('runCommand', 'jest.singleTest')<CR>
 " Init jest in current cwd, require global jest command exists
 command! -nargs=0 JestInit :call CocAction('runCommand', 'jest.init')<CR>
 
-command! -nargs=0 CocExt :call CocList extensions<CR>
+command! -nargs=0 CocExt :CocList extensions<CR>
