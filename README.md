@@ -41,11 +41,8 @@ Plug 'mbbill/undotree'
 Plug 'eliba2/vim-node-inspect'
 Plug 'voldikss/vim-floaterm'
 Plug 'MattesGroeger/vim-bookmarks'
-"Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'javascriptreact'] }
-"Plug 'peitalin/vim-jsx-typescript', { 'for': ['javascript', 'javascript.jsx', 'javascriptreact'] }
-"Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx', 'typescriptreact'] }
-Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': ['javascript', 'javascript.jsx', 'javascriptreact'] }
-Plug 'jparise/vim-graphql', { 'for': ['javascript', 'javascript.jsx', 'javascriptreact'] }
+Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': ['javascript', 'javascriptreact', 'typescript', typescriptreact'] }
+Plug 'jparise/vim-graphql', { 'for': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'] }
 Plug '5c077m4n/scottconfig.vim'
 call plug#end()
 ```
