@@ -29,7 +29,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
-" install ranger plugin when not in macvim
+" Install ranger plugin when not in macvim
 if !has('gui_macvim')
 	Plug 'francoiscabrol/ranger.vim'
 endif
@@ -39,7 +39,12 @@ Plug 'tpope/vim-surround'
 Plug 'itspriddle/vim-shellcheck'
 Plug 'mbbill/undotree'
 Plug 'eliba2/vim-node-inspect'
-Plug 'voldikss/vim-floaterm'
+
+" Install Floaterm only when not in vim
+if has('nvim') || has('gui_macvim')
+	Plug 'voldikss/vim-floaterm'
+endif
+
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': ['javascript', 'javascriptreact', 'typescript', typescriptreact'] }
 Plug 'jparise/vim-graphql', { 'for': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'] }
