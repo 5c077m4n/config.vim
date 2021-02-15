@@ -7,7 +7,7 @@ function! scottconfig#utils#CleanExtraSpaces()
 endfunction
 
 function! scottconfig#utils#GetVimConfigPath()
-	if g:scottconfig#vars#is_nvi
+	if g:scottconfig#vars#is_nvim
 		return $HOME.'/.config/nvim/init.vim'
 	elseif g:scottconfig#vars#is_gvim
 		return $HOME.'/.gvimrc'
