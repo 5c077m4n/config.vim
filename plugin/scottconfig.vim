@@ -266,10 +266,6 @@ nmap <leader>s? z=
 " => Plugins config
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-if !exists(':PlugInstall')
-	call scottconfig#plugins#InstallPlug()
-endif
-
 nnoremap <silent> K :call scottconfig#utils#ShowDocumentation()<CR>
 inoremap <silent><expr> <TAB> pumvisible() ? "\<C-n>" : scottconfig#utils#CheckBackSpace() ? "\<TAB>" : coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
