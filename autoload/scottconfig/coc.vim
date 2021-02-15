@@ -2,11 +2,11 @@ function! scottconfig#coc#GetExtensions()
 	let l:coc_ext = ['coc-lists', 'coc-spell-checker']
 
 	if isdirectory('./node_modules') && isdirectory('./node_modules/prettier') || executable('prettier')
-		let g:coc_global_extensions += ['coc-prettier']
+		let g:coc_ext += ['coc-prettier']
 	endif
 
 	if isdirectory('./node_modules') && isdirectory('./node_modules/eslint') || executable('eslint')
-		let g:coc_global_extensions += ['coc-eslint']
+		let g:coc_ext += ['coc-eslint']
 	endif
 
 	if &filetype ==? 'json'
