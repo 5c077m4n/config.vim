@@ -45,7 +45,7 @@ Plug 'pangloss/vim-javascript', { 'for': ['javascript', 'javascript.jsx', 'javas
 Plug 'peitalin/vim-jsx-typescript', { 'for': ['javascript', 'javascript.jsx', 'javascriptreact'] }
 Plug 'leafgarland/typescript-vim', { 'for': ['typescript', 'typescript.tsx', 'typescriptreact'] }
 Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': ['javascript', 'javascript.jsx', 'javascriptreact'] }
-Plug 'jparise/vim-graphql'
+Plug 'jparise/vim-graphql', { 'branch': 'main', 'for': ['javascript', 'javascript.jsx', 'javascriptreact'] }
 Plug '5c077m4n/scottconfig.vim'
 call plug#end()
 ```
