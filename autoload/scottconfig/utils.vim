@@ -1,7 +1,3 @@
-let s:is_vim = !has('nvim')
-let s:is_nvim = has('nvim')
-let s:is_gvim = get(v:, 'progname', '') ==# 'gvim' || has('gui_macvim')
-
 function! scottconfig#utils#CleanExtraSpaces()
 	let save_cursor = getpos(".")
 	let old_query = getreg('/')
@@ -11,11 +7,11 @@ function! scottconfig#utils#CleanExtraSpaces()
 endfunction
 
 function! scottconfig#utils#GetVimConfigPath()
-	if is_nvim
+	if g:scottconfig#vars#is_nvi
 		return $HOME.'/.config/nvim/init.vim'
-	elseif is_gvim
+	elseif g:scottconfig#vars#is_gvim
 		return $HOME.'/.gvimrc'
-	elseif is_vim
+	elseif g:scottconfig#vars#is_vim
 		return $HOME.'/.vimrc'
 	else
 		echohl Error

@@ -3,7 +3,7 @@
 In order to use this plugin add this to your `.vimrc`/`init.vim`/`.gvimrc`/whatever file:
 
 ```vim
-function! s:get_plug_install_dir() abort
+function! s:get_plug_install_dir()
 	if has('nvim')
 		return $HOME.'/.config/nvim/plugged'
 	elseif has('gui_macvim')

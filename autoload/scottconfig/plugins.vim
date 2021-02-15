@@ -1,7 +1,3 @@
-let s:is_vim = !has('nvim')
-let s:is_nvim = has('nvim')
-let s:is_gvim = get(v:, 'progname', '') ==# 'gvim' || has('gui_macvim')
-
 function! scottconfig#plugins#GetInstallDir()
 	if g:scottconfig#vars#is_nvim
 		return $HOME.'/.config/nvim/plugged'
