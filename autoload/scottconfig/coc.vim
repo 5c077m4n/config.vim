@@ -1,5 +1,5 @@
 function! scottconfig#coc#GetExtensions()
-	let l:coc_ext = ['coc-spell-checker']
+	let l:coc_ext = ['coc-lists', 'coc-spell-checker']
 
 	if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
 		let g:coc_global_extensions += ['coc-prettier']
