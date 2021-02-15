@@ -41,6 +41,10 @@ Plug 'mbbill/undotree'
 Plug 'eliba2/vim-node-inspect'
 Plug 'voldikss/vim-floaterm'
 Plug 'MattesGroeger/vim-bookmarks'
+Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
+Plug 'styled-components/vim-styled-components', { 'branch': 'main' }
 Plug 'jparise/vim-graphql'
 Plug '5c077m4n/scottconfig.vim'
 call plug#end()

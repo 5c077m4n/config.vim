@@ -28,3 +28,6 @@ command! -nargs=0 JestFile :call CocAction('runCommand', 'jest.fileTest', ['%'])
 command! -nargs=0 JestTest :call CocAction('runCommand', 'jest.singleTest')<CR>
 " Init jest in current cwd, require global jest command exists
 command! -nargs=0 JestInit :call CocAction('runCommand', 'jest.init')<CR>
+
+autocmd BufEnter <buffer> :syntax sync fromstart
+autocmd BufLeave <buffer> :syntax sync clear

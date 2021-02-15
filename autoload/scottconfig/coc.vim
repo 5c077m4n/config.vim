@@ -1,10 +1,18 @@
 function! scottconfig#coc#GetExtensions()
-	let l:coc_ext = ['coc-prettier', 'coc-spell-checker']
+	let l:coc_ext = ['coc-spell-checker']
+
+	if isdirectory('./node_modules') && isdirectory('./node_modules/prettier')
+		let g:coc_global_extensions += ['coc-prettier']
+	endif
+
+	if isdirectory('./node_modules') && isdirectory('./node_modules/eslint')
+		let g:coc_global_extensions += ['coc-eslint']
+	endif
 
 	if &filetype ==? 'json'
 		let l:coc_ext += ['coc-json']
 	elseif index(['ts', 'typescript', 'tsx', 'typescriptreact', 'js', 'javascript', 'jsx', 'javascriptreact'], &filetype) >= 0
-		let l:coc_ext += ['coc-tsserver', 'coc-jest', 'coc-eslint', 'coc-react-refactor', 'coc-sql', 'coc-graphql']
+		let l:coc_ext += ['coc-tsserver', 'coc-jest', 'coc-react-refactor', 'coc-sql', 'coc-graphql']
 	elseif &filetype ==? 'html'
 		let l:coc_ext += ['coc-html', 'coc-css']
 	elseif index(['css', 'scss', 'less'], &filetype) >= 0
