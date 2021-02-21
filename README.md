@@ -40,8 +40,8 @@ Plug 'itspriddle/vim-shellcheck'
 Plug 'mbbill/undotree'
 Plug 'eliba2/vim-node-inspect'
 
-" Install Floaterm only when not in vim
-if has('nvim') || has('gui_macvim')
+" Install Floaterm only when in neovim
+if has('nvim')
 	Plug 'voldikss/vim-floaterm'
 endif
 
