@@ -239,6 +239,7 @@ set si
 set wrap
 
 " Remap VIM 0 to first non-blank character
+vnoremap 0 ^
 nnoremap 0 ^
 
 " Delete trailing white space on save
