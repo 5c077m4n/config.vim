@@ -16,7 +16,7 @@ endfunction
 call plug#begin(<SID>get_plug_install_dir())
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> coc#util#install() } }
 Plug 'tpope/vim-sensible'
-Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
+Plug 'scrooloose/nerdtree'
 Plug 'PhilRunninger/nerdtree-visual-selection'
 Plug 'PhilRunninger/nerdtree-buffer-ops'
 Plug 'scrooloose/nerdcommenter'
