@@ -344,6 +344,7 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 """ Floaterm
+let g:floaterm_autoclose = 1
 nnoremap <silent> <F9> :FloatermPrev<CR>
 tnoremap <silent> <F9> <C-\><C-n>:FloatermPrev<CR>
 nnoremap <silent> <F10> :FloatermNext<CR>
@@ -352,17 +353,3 @@ nnoremap <silent> <F11> :FloatermNew<CR>
 tnoremap <silent> <F11> <C-\><C-n>:FloatermNew<CR>
 nnoremap <silent> <F12> :FloatermToggle<CR>
 tnoremap <silent> <F12> <C-\><C-n>:FloatermToggle<CR>
-let g:floaterm_autoclose = 1
-
-""" Bookmarks
-let g:bookmark_no_default_key_mappings = 1
-" For some reason the `g:bookmark_no_default_key_mappings = 1` above does not work - and so conflicts with NERDTree
-for cmd in ['mm', 'mi', 'mn', 'mp', 'mc', 'ma', 'mx', 'mkk', 'mjj']
-	:call scottconfig#utils#unmap_if_exists(cmd)
-endfor
-nmap <silent> <leader>mm <Plug>BookmarkToggle
-nmap <silent> <leader>mi <Plug>BookmarkAnnotate
-nmap <silent> <leader>m] <Plug>BookmarkNext
-nmap <silent> <leader>m[ <Plug>BookmarkPrev
-nmap <silent> <leader>ma <Plug>BookmarkShowAll
-nmap <silent> <leader>mx <Plug>BookmarkClearAll
