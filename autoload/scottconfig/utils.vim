@@ -37,3 +37,9 @@ function! scottconfig#utils#ShowDocumentation()
 		execute '!' . &keywordprg . " " . expand('<cword>')
 	endif
 endfunction
+
+function! scottconfig#utils#unmap_if_exists(command)
+	if maparg(a:command) !=# ''
+		execute 'unmap '.a:command
+	endif
+endfunction
