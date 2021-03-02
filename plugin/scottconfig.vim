@@ -273,7 +273,12 @@ inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
 inoremap <expr> <CR> pumvisible() ? "\<C-y>" : "\<CR>"
 
 """ Theme
-colorscheme molokai
+try
+	colorscheme molokai
+catch /^Vim\%((\a\+)\)\=:E185/
+	colorscheme default
+	set background=dark
+endtry
 
 """ Coc
 let g:coc_global_extensions = scottconfig#coc#GetExtensions()
