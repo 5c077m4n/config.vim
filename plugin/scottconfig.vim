@@ -48,6 +48,8 @@ augroup filetype_rust
     autocmd BufReadPost *.rs setlocal filetype=rust
 augroup END
 
+syntax on
+
 " Line numbering
 set number
 set relativenumber
@@ -303,7 +305,7 @@ nnoremap <silent> <leader>tf :NERDTreeFocus<CR>
 nnoremap <silent> <leader>ts :NERDTreeFind<CR>
 nnoremap <silent> <leader>tr :NERDTreeRefreshRoot<CR>
 " Exit Vim if NERDTree is the only window left.
-"autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
+"autocmBufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() | quit | endif
 " Start NERDTree when Vim starts with a directory argument.
 autocmd StdinReadPre * let s:std_in=1
 autocmd VimEnter * if argc() == 1 && isdirectory(argv()[0]) && !exists('s:std_in') |
