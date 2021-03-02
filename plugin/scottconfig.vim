@@ -284,8 +284,10 @@ endtry
 let g:coc_global_extensions = scottconfig#coc#GetExtensions()
 
 """ Ranger
-let g:ranger_map_keys = 0 " Disable default key mappings
-nnoremap <silent> <leader>r :Ranger<CR>
+if exists(':Ranger')
+	let g:ranger_map_keys = 0 " Disable default key mappings
+	nnoremap <silent> <leader>r :Ranger<CR>
+endif
 
 """ Rust
 if g:scottconfig#vars#is_mac
