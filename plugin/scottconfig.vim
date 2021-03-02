@@ -347,9 +347,9 @@ let g:floaterm_autoclose = 1
 
 """ Bookmarks
 let g:bookmark_no_default_key_mappings = 1
-nmap <silent> mm <Plug>BookmarkToggle
-nmap <silent> mi <Plug>BookmarkAnnotate
-nmap <silent> m] <Plug>BookmarkNext
-nmap <silent> m[ <Plug>BookmarkPrev
-nmap <silent> ma <Plug>BookmarkShowAll
-nmap <silent> mx <Plug>BookmarkClearAll
+nmap <silent> <leader>mm <Plug>BookmarkToggle
+nmap <silent> <leader>mi <Plug>BookmarkAnnotate
+nmap <silent> <leader>m] <Plug>BookmarkNext
+nmap <silent> <leader>m[ <Plug>BookmarkPrev
+nmap <silent> <leader>ma <Plug>BookmarkShowAll
+nmap <silent> <leader>mx <Plug>BookmarkClearAll
