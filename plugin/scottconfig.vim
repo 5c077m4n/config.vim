@@ -348,15 +348,20 @@ let g:floaterm_autoclose = 1
 """ Bookmarks
 let g:bookmark_no_default_key_mappings = 1
 " For some reason the no defaults above does not work - and so conflicts with NERDTree
-unmap mm
-unmap mi
-unmap mn
-unmap mp
-unmap ma
-unmap mc
-unmap mx
-unmap mkk
-unmap mjj
+if mapcheck('m') !=# ''
+	try
+		unmap ma
+		unmap mm
+		unmap mi
+		unmap mn
+		unmap mp
+		unmap mc
+		unmap mx
+		unmap mkk
+		unmap mjj
+	catch
+	endtry
+endif
 nmap <silent> <leader>mm <Plug>BookmarkToggle
 nmap <silent> <leader>mi <Plug>BookmarkAnnotate
 nmap <silent> <leader>m] <Plug>BookmarkNext
