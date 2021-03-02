@@ -356,7 +356,7 @@ let g:floaterm_autoclose = 1
 let g:bookmark_no_default_key_mappings = 1
 " For some reason the no defaults above does not work - and so conflicts with NERDTree
 for cmd in ['ma', 'mm', 'mi', 'mn', 'mp', 'mc', 'mx', 'mkk', 'mjj']
-	scottconfig#utils#unmap_if_exists(cmd)
+	:call scottconfig#utils#unmap_if_exists(cmd)
 endfor
 nmap <silent> <leader>mm <Plug>BookmarkToggle
 nmap <silent> <leader>mi <Plug>BookmarkAnnotate
