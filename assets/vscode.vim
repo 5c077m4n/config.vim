@@ -84,7 +84,7 @@ nnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
 xnoremap <silent> <C-l> :call VSCodeNotify('workbench.action.navigateRight')<CR>
 
 nnoremap gr <Cmd>call VSCodeNotify('editor.action.goToReferences')<CR>
-nnoremap gr <Cmd>call VSCodeNotify('editor.action.goToDeclaration')<CR>
+nnoremap gd <Cmd>call VSCodeNotify('editor.action.goToDeclaration')<CR>
 
 " Bind C-/ to vscode commentary since calling from vscode produces double comments due to multiple cursors
 xnoremap <expr> <C-/> <SID>vscodeCommentary()
@@ -96,8 +96,3 @@ nnoremap <silent> <Space> :call VSCodeNotify('whichkey.show')<CR>
 xnoremap <silent> <Space> :<C-u>call <SID>openWhichKeyInVisualMode()<CR>
 
 xnoremap <silent> <C-P> :<C-u>call <SID>openVSCodeCommandsInVisualMode()<CR>
-
-xmap <leader>/ <Plug>VSCodeCommentary
-nmap <leader>/ <Plug>VSCodeCommentary
-omap <leader>/ <Plug>VSCodeCommentary
-nmap <leader>// <Plug>VSCodeCommentaryLine
