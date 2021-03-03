@@ -54,7 +54,8 @@ syntax on
 set number
 set relativenumber
 
-let mapleader = " "
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
 
 nnoremap <expr> <leader>1 ":edit ".scottconfig#utils#GetVimConfigPath()."<CR>"
 nnoremap <expr> <leader>2 ":source ".scottconfig#utils#GetVimConfigPath()."<CR>"
@@ -353,3 +354,8 @@ nnoremap <silent> <F11> :FloatermNew<CR>
 tnoremap <silent> <F11> <C-\><C-n>:FloatermNew<CR>
 nnoremap <silent> <F12> :FloatermToggle<CR>
 tnoremap <silent> <F12> <C-\><C-n>:FloatermToggle<CR>
+
+""" WhichKey
+nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
+vnoremap <silent> <leader> :<c-u>WhichKeyVisual '<Space>'<CR>
+nnoremap <silent> <leader> :<c-u>WhichKey ','<CR>
