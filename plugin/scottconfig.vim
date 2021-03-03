@@ -1,9 +1,7 @@
 " Roee's default vim/nvim/gvim config
 " Maintainer: Roee Shapira <ro33.sha@gmail.com>
 
-if exists('g:disable_scott_config')
-	finish
-endif
+if exists('g:disable_scott_config') | finish | endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -94,8 +92,6 @@ if $COLORTERM == 'gnome-terminal'
 	set t_Co=256
 endif
 
-set background=dark
-
 " Set extra options when running in GUI mode
 if has('gui_running')
 	set guioptions-=T
@@ -154,7 +150,7 @@ set hlsearch
 " Makes search act like search in modern browsers
 set incsearch
 " This unsets the last search pattern register by hitting return
-nnoremap <CR> :noh<CR><CR>
+nnoremap <silent> <CR> :noh<CR><CR>
 
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
@@ -242,8 +238,8 @@ set si
 set wrap
 
 " Remap VIM 0 to first non-blank character
-vnoremap 0 ^
 nnoremap 0 ^
+vnoremap 0 ^
 
 " Delete trailing white space on save
 autocmd BufWritePre *.txt,*.js,*.jsx,*.ts,*.tsx,*.sql,*.py,*.sh, :call scottconfig#utils#CleanExtraSpaces()
@@ -335,7 +331,7 @@ nnoremap <silent> <leader>f :Rg<CR>
 let g:fzf_action = {
 			\ 'ctrl-t': 'tab split',
 			\ 'ctrl-s': 'split',
-			\ 'ctrl-v': 'vsplit'
+			\ 'ctrl-h': 'vsplit'
 			\}
 
 """ Syntastic
@@ -345,12 +341,15 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 """ Floaterm
-let g:floaterm_autoclose = 1
-nnoremap <silent> <F9> :FloatermPrev<CR>
-tnoremap <silent> <F9> <C-\><C-n>:FloatermPrev<CR>
-nnoremap <silent> <F10> :FloatermNext<CR>
-tnoremap <silent> <F10> <C-\><C-n>:FloatermNext<CR>
-nnoremap <silent> <F11> :FloatermNew<CR>
-tnoremap <silent> <F11> <C-\><C-n>:FloatermNew<CR>
-nnoremap <silent> <F12> :FloatermToggle<CR>
-tnoremap <silent> <F12> <C-\><C-n>:FloatermToggle<CR>
+if exists(':FloatermNew')
+	let g:floaterm_autoclose = 1
+
+	nnoremap <silent> <F9> :FloatermPrev<CR>
+	tnoremap <silent> <F9> <C-\><C-n>:FloatermPrev<CR>
+	nnoremap <silent> <F10> :FloatermNext<CR>
+	tnoremap <silent> <F10> <C-\><C-n>:FloatermNext<CR>
+	nnoremap <silent> <F11> :FloatermNew<CR>
+	tnoremap <silent> <F11> <C-\><C-n>:FloatermNew<CR>
+	nnoremap <silent> <F12> :FloatermToggle<CR>
+	tnoremap <silent> <F12> <C-\><C-n>:FloatermToggle<CR>
+endif
