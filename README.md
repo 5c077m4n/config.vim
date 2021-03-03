@@ -48,7 +48,7 @@ endif
 Plug 'MattesGroeger/vim-bookmarks'
 Plug 'styled-components/vim-styled-components', { 'branch': 'main', 'for': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'] }
 Plug 'jparise/vim-graphql', { 'for': ['javascript', 'javascriptreact', 'typescript', 'typescriptreact'] }
-Plug 'liuchengxu/vim-which-key', { 'on': ['WhichKey', 'WhichKey!'] }
+Plug 'liuchengxu/vim-which-key'
 Plug '5c077m4n/scottconfig.vim'
 call plug#end()
 ```
