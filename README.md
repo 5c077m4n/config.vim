@@ -29,7 +29,7 @@ Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 
-" Install ranger plugin when not in macvim
+" Install Ranger when not in macvim
 if !has('gui_macvim')
 	Plug 'francoiscabrol/ranger.vim'
 endif
