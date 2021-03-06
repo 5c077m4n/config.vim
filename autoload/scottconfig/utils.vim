@@ -34,7 +34,7 @@ function! scottconfig#utils#ShowDocumentation()
 	elseif coc#rpc#ready()
 		call CocActionAsync('doHover')
 	else
-		execute '!' . &keywordprg . " " . expand('<cword>')
+		execute '!' . &keywordprg . ' ' . expand('<cword>')
 	endif
 endfunction
 
