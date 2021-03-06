@@ -194,6 +194,8 @@ nnoremap <C-l> <C-W>l
 nnoremap <silent> <leader>wh :split<CR>
 nnoremap <silent> <leader>wv :vertical split<CR>
 nnoremap <silent> <leader>wq <C-W>q<CR>
+" Re-open last closed split
+nnoremap <silent> <leader>wr :vs#<CR>
 
 """ Tabs
 nnoremap <silent> <leader>] :tabn<CR>
@@ -302,6 +304,7 @@ if exists(':NERDTree')
 	nnoremap <silent> <leader>tf :NERDTreeFocus<CR>
 	nnoremap <silent> <leader>ts :NERDTreeFind<CR>
 	nnoremap <silent> <leader>tr :NERDTreeRefreshRoot<CR>
+
 	augroup nerd_tree
 		autocmd!
 		" So sessions won't break on startup
