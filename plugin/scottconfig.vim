@@ -251,6 +251,16 @@ inoremap <S-Tab> <C-d>
 vnoremap <Tab> >gv
 vnoremap <S-Tab> <gv
 
+" Word traversing
+inoremap <C-b> <C-o>b
+inoremap <C-e> <C-o>e
+inoremap <C-w> <C-o>w
+
+inoremap <C-h> <C-o>h
+inoremap <C-j> <C-o>j
+inoremap <C-k> <C-o>k
+inoremap <C-l> <C-o>l
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Spell checking
