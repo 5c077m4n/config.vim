@@ -38,7 +38,7 @@ Plug 'townk/vim-autoclose'
 Plug 'tpope/vim-surround'
 Plug 'itspriddle/vim-shellcheck'
 Plug 'mbbill/undotree'
-Plug 'eliba2/vim-node-inspect'
+Plug 'puremourning/vimspector'
 
 " Install Floaterm only when in neovim
 if has('nvim')
