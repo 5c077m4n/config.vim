@@ -375,6 +375,11 @@ if exists(':FloatermNew')
 	tnoremap <silent> <F12> <C-\><C-n>:FloatermToggle<CR>
 endif
 
+""" Vimspector
+packadd! vimspector
+nmap <leader>di <Plug>VimspectorBalloonEval
+xmap <leader>di <Plug>VimspectorBalloonEval
+
 if exists('g:vscode')
 	runtime! assets/vscode.vim
 endif
