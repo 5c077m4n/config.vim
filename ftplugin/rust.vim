@@ -3,4 +3,5 @@ if !exists("b:did_ftplugin")
 	let b:BuffEnter='syntax sync fromstart'
 
 	runtime! assets/coc_commands.vim
+	runtime! assets/rust_debugger.vim
 endif
