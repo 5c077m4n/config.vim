@@ -1,4 +1,4 @@
-packadd! termdebug
+packadd termdebug
 
 nmap <leader>dd :Termdebug<Space>
 nmap <silent> <leader>dD :call TermDebugSendCommand('quit')<CR>:Gdb<CR>y<CR>
