@@ -379,6 +379,7 @@ endif
 packadd! vimspector
 nmap <leader>di <Plug>VimspectorBalloonEval
 xmap <leader>di <Plug>VimspectorBalloonEval
+let g:vimspector_install_gadgets = ['vscode-node-debug2', 'debugger-for-chrome', 'CodeLLDB']
 
 if exists('g:vscode')
 	runtime! assets/vscode.vim
