@@ -377,7 +377,10 @@ endif
 
 """ Vimspector
 packadd! vimspector
-nmap <leader>di <Plug>VimspectorBalloonEval
+" for normal mode - the word under the cursor
+nmap <Leader>di <Plug>VimspectorBalloonEval
+" for visual mode, the visually selected text
+xmap <Leader>di <Plug>VimspectorBalloonEval
 nmap <leader>dd :call vimspector#Launch()<CR>
 nmap <leader>dx :VimspectorReset<CR>
 nmap <leader>de :VimspectorEval
