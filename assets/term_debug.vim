@@ -16,4 +16,3 @@ nmap <leader>dl :call TermDebugSendCommand('info locals')<CR>
 nmap <leader>da :call TermDebugSendCommand('info args')<CR>
 
 let g:termdebug_wide=1
-let g:termdebugger="rust-gdb"
