@@ -4,6 +4,6 @@ if !exists("b:did_ftplugin")
 	let g:termdebugger='rust-gdb'
 
 	runtime! assets/coc_commands.vim
-	runtime! assets/vimspector.vim
-	" runtime! assets/term_debug.vim
+	" runtime! assets/vimspector.vim
+	runtime! assets/term_debug.vim
 endif
