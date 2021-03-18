@@ -347,17 +347,16 @@ if has('persistent_undo')
 endif
 
 """ FZF
-let g:fzf_command_prefix = 'Fzf'
 let g:fzf_action = { 'ctrl-t': 'tab split', 'ctrl-s': 'split', 'ctrl-h': 'vsplit' }
-nnoremap <silent> <leader>ffl :FzfFiles<CR>
-nnoremap <silent> <leader>fft :FzfFiletypes<CR>
-nnoremap <silent> <leader>fsr :FzfRg<CR>
-nnoremap <silent> <leader>fsa :FzfAg<CR>
-nnoremap <silent> <leader>fm :FzfMarks<CR>
-nnoremap <silent> <leader>fhb :FzfHistory<CR>
-nnoremap <silent> <leader>fhs :FzfHistory/<CR>
-nnoremap <silent> <leader>fc :FzfCommits<CR>
-nnoremap <silent> <leader>fbc :FzfBCommits<CR>
+nnoremap <silent> <leader>ffl :Files<CR>
+nnoremap <silent> <leader>fft :Filetypes<CR>
+nnoremap <silent> <leader>fsr :Rg<CR>
+nnoremap <silent> <leader>fsa :Ag<CR>
+nnoremap <silent> <leader>fm :Marks<CR>
+nnoremap <silent> <leader>fhb :History<CR>
+nnoremap <silent> <leader>fhs :History/<CR>
+nnoremap <silent> <leader>fc :Commits<CR>
+nnoremap <silent> <leader>fbc :BCommits<CR>
 
 """ Syntastic
 let g:syntastic_always_populate_loc_list = 1
