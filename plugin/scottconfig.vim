@@ -347,13 +347,17 @@ if has('persistent_undo')
 endif
 
 """ FZF
-nnoremap <silent> <C-f> :Files<CR>
-nnoremap <silent> <leader>f :Rg<CR>
-let g:fzf_action = {
-			\ 'ctrl-t': 'tab split',
-			\ 'ctrl-s': 'split',
-			\ 'ctrl-h': 'vsplit'
-			\}
+let g:fzf_command_prefix = 'Fzf'
+let g:fzf_action = { 'ctrl-t': 'tab split', 'ctrl-s': 'split', 'ctrl-h': 'vsplit' }
+nnoremap <silent> <leader>ffl :FzfFiles<CR>
+nnoremap <silent> <leader>fft :FzfFiletypes<CR>
+nnoremap <silent> <leader>fsr :FzfRg<CR>
+nnoremap <silent> <leader>fsa :FzfAg<CR>
+nnoremap <silent> <leader>fm :FzfMarks<CR>
+nnoremap <silent> <leader>fhb :FzfHistory<CR>
+nnoremap <silent> <leader>fhs :FzfHistory/<CR>
+nnoremap <silent> <leader>fc :FzfCommits<CR>
+nnoremap <silent> <leader>fbc :FzfBCommits<CR>
 
 """ Syntastic
 let g:syntastic_always_populate_loc_list = 1
