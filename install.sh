@@ -1,18 +1,5 @@
 #!/bin/sh
 
-if [ -x "$(command -v nvim)" ]; then
-	curl -fLo \
-		"${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/autoload/plug.vim" \
-		--create-dirs \
-		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
-if [ -x "$(command -v vim)" ]; then
-	curl -fLo \
-		~/.vim/autoload/plug.vim \
-		--create-dirs \
-		https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-fi
-
 cat > ~/.vimrc << END
 function! s:get_plug_install_dir()
 	if has('nvim')
@@ -57,6 +44,30 @@ if has('nvim')
 	Plug 'voldikss/vim-floaterm'
 endif
 
-Plug '5c077m4n/scottconfig.vim'
+Plug '5c077m4n/scottconfig.vim', { 'do': './install.sh' }
 call plug#end()
 END
+
+while test $# -gt 0; do
+	case "$1" in
+		-i|--init)
+			if [ -x "$(command -v nvim)" ]; then
+				curl -fLo \
+					"${XDG_DATA_HOME:-$HOME/.local/share}/nvim/site/autoload/plug.vim" \
+					--create-dirs \
+					https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+				nvim -es -u init.vim -i NONE -c "PlugInstall" -c "qa"
+			fi
+			if [ -x "$(command -v vim)" ]; then
+				curl -fLo \
+					~/.vim/autoload/plug.vim \
+					--create-dirs \
+					https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+				vim -es -u vimrc -i NONE -c "PlugInstall" -c "qa"
+			fi
+			;;
+		*)
+			break
+			;;
+	esac
+done
