@@ -388,5 +388,5 @@ if exists(':FloatermNew')
 endif
 
 if exists('g:vscode')
-	runtime! assets/vscode.vim
+	runtime! lib/vscode.vim
 endif
