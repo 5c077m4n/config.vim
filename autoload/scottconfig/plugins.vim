@@ -6,20 +6,7 @@ function! scottconfig#plugins#PlugDeregister(repo)
 endfunction
 
 function! scottconfig#plugins#GetInstallDir()
-	if g:scottconfig#vars#is_nvim
-		return $HOME.'/.config/nvim/plugged'
-	elseif g:scottconfig#vars#is_gvim
-		return $HOME.'/config/macvim/plugged'
-	elseif g:scottconfig#vars#is_vim
-		return $HOME.'/.vim/plugged'
-	else
-		echohl Error
-		echom "This version of Vim is unsupported"
-		echohl None
-		sleep 2
-
-		return $HOME.'/.vim/plugged'
-	endif
+	return g:plug_home
 endfunction
 
 function! scottconfig#plugins#InstallPlug()
