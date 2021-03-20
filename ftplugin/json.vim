@@ -3,5 +3,5 @@ if !exists("b:did_ftplugin")
 	let b:BuffEnter='syntax sync fromstart'
 	syntax match Comment +\/\/.\+$+
 
-	runtime! assets/coc_commands.vim
+	runtime! lib/coc_commands.vim
 endif

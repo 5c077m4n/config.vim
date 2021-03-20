@@ -3,5 +3,5 @@ if !exists("b:did_ftplugin")
 	let b:BuffEnter='syntax sync fromstart'
 	"setlocal foldmethod=syntax
 
-	runtime! assets/coc_commands.vim assets/node_inspect_commands.vim
+	runtime! lib/coc_commands.vim lib/term_debug.vim
 endif

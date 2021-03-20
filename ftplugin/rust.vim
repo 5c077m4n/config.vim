@@ -3,7 +3,5 @@ if !exists("b:did_ftplugin")
 	let b:BuffEnter='syntax sync fromstart'
 	let g:termdebugger='rust-gdb'
 
-	runtime! assets/coc_commands.vim
-	" runtime! assets/vimspector.vim
-	runtime! assets/term_debug.vim
+	runtime! lib/coc_commands.vim lib/term_debug.vim
 endif

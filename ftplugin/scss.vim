@@ -2,5 +2,5 @@
 if !exists("b:did_ftplugin")
 	setl iskeyword+=@-@
 
-	runtime! assets/coc_commands.vim
+	runtime! lib/coc_commands.vim
 endif
