@@ -2,6 +2,8 @@
 " Maintainer: Roee Shapira <ro33.sha@gmail.com>
 
 if exists('g:disable_scott_config') | finish | endif
+" Load dependencies
+runtime! lib/deps.vim
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
