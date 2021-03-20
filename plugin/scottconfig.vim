@@ -3,7 +3,6 @@
 
 if exists('g:disable_scott_config') | finish | endif
 " Load dependencies
-runtime! lib/deps.vim
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
