@@ -66,8 +66,11 @@ nnoremap U <C-r>
 command! SudoW execute 'w !sudo tee % > /dev/null' <bar> edit!
 
 """ Misc
-" Return to the last editing point when opening files
-au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+augroup last_read_point
+	autocmd!
+	" Return to the last editing point when opening files
+	autocmd BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
+augroup END
 " Mouse support
 if has('mouse')
 	set mouse=i
@@ -77,8 +80,11 @@ vnoremap <C-c> "+y
 " paste from clipboard where pressing ctrl-v in insert mode
 inoremap <C-v> <C-o>"+p
 
-" Trigger autoread when changing buffers inside while inside vim
-autocmd FocusGained,BufEnter * :checktime
+augroup autoread_on_buffer_change
+	autocmd!
+	" Trigger autoread when changing buffers inside while inside vim
+	autocmd FocusGained,BufEnter * :checktime
+augroup END
 
 set modifiable
 
@@ -118,10 +124,6 @@ set so=7
 let $LANG='en'
 set langmenu=en
 
-" Reset menus (becuase of the languase set above)
-"source $VIMRUNTIME/delmenu.vim
-"source $VIMRUNTIME/menu.vim
-
 " Turn on the Wild menu
 set wildmenu
 
@@ -151,29 +153,26 @@ set hlsearch
 set incsearch
 " This unsets the last search pattern register by hitting return
 nnoremap <silent> <CR> :noh<CR><CR>
-
 " Don't redraw while executing macros (good performance config)
 set lazyredraw
-
 " For regular expressions turn magic on
 set magic
-
 " Show matching brackets when text indicator is over them
 set showmatch
 " How many tenths of a second to blink when matching brackets
 set mat=2
-
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
-
 " Properly disable sound on errors on MacVim
 if g:scottconfig#vars#is_gvim
-	autocmd GUIEnter * set vb t_vb=
+	augroup disable_macvim_sounds
+		autocmd!
+		autocmd GUIEnter * set vb t_vb=
+	augroup END
 endif
-
 " Add a bit extra margin to the left
 set foldcolumn=1
 
@@ -244,7 +243,10 @@ nnoremap 0 ^
 vnoremap 0 ^
 
 " Delete trailing white space on save
-autocmd BufWritePre *.txt,*.js,*.jsx,*.ts,*.tsx,*.sql,*.py,*.sh, :call scottconfig#utils#CleanExtraSpaces()
+augroup delete_trailing_spaces_on_save
+	autocmd!
+	autocmd BufWritePre *.txt,*.js,*.jsx,*.ts,*.tsx,*.sql,*.py,*.sh, :call scottconfig#utils#CleanExtraSpaces()
+augroup END
 
 " Indentation commands
 inoremap <S-Tab> <C-d>
