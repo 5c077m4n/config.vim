@@ -291,6 +291,11 @@ catch /^Vim\%((\a\+)\)\=:E185/
 	set background=dark
 endtry
 
+""" Airline
+let g:airline#extensions#tabline#enabled = 1
+let g:airline_extensions = []
+let g:airline_theme='dark_minimal'
+
 """ Coc
 let g:coc_global_extensions = scottconfig#coc#GetExtensions()
 
