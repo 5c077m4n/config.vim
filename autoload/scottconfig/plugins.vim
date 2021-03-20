@@ -1,3 +1,10 @@
+function! scottconfig#plugins#PlugDeregister(repo)
+  let repo = substitute(a:repo, '[\/]\+$', '', '')
+  let name = fnamemodify(repo, ':t:s?\.git$??')
+  call remove(g:plugs, name)
+  call remove(g:plugs_order, index(g:plugs_order, name))
+endfunction
+
 function! scottconfig#plugins#GetInstallDir()
 	if g:scottconfig#vars#is_nvim
 		return $HOME.'/.config/nvim/plugged'
