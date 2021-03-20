@@ -294,9 +294,11 @@ catch /^Vim\%((\a\+)\)\=:E185/
 endtry
 
 """ Airline
-let g:airline#extensions#tabline#enabled = 1
 let g:airline_extensions = []
 let g:airline_theme='dark_minimal'
+let g:airline#extensions#coc#enabled = 1
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 """ Coc
 let g:coc_global_extensions = scottconfig#coc#GetExtensions()
