@@ -294,7 +294,7 @@ catch /^Vim\%((\a\+)\)\=:E185/
 endtry
 
 """ Airline
-let g:airline_extensions = []
+let g:airline_extensions = ['branch', 'tabline', 'coc', 'fzf', 'undotree']
 let g:airline_theme='dark_minimal'
 let g:airline#extensions#coc#enabled = 1
 let g:airline#extensions#tabline#enabled = 1
