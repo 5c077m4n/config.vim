@@ -310,13 +310,6 @@ if exists(':Ranger')
 	nnoremap <silent> <leader>r :Ranger<CR>
 endif
 
-""" Rust
-if g:scottconfig#vars#is_mac
-	let g:rust_clip_command = 'pbcopy'
-else
-	let g:rust_clip_command = 'xclip -selection clipboard'
-endif
-
 """ NERDTree
 if exists(':NERDTree')
 	let NERDTreeShowHidden=1
