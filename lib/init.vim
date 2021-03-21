@@ -1,6 +1,6 @@
 function! s:get_plug_install_dir()
 	if has('nvim')
-		return stdpath('config') . '/.config/nvim/plugged'
+		return stdpath('config') . '/plugged'
 	elseif has('gui_macvim')
 		return $HOME . '/.config/macvim/plugged'
 	else
