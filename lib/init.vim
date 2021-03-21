@@ -41,5 +41,5 @@ if has('nvim')
 	Plug 'voldikss/vim-floaterm'
 endif
 
-Plug '5c077m4n/scottconfig.vim', { 'do': './install.sh' }
+Plug '5c077m4n/scottconfig.vim'
 call plug#end()
