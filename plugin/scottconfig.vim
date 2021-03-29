@@ -63,9 +63,6 @@ nnoremap <silent> <leader>4 :PlugUpgrade<CR>:PlugUpdate<CR>:CocUpdate<CR>
 " Map redo to Ctrl+u
 nnoremap U <C-r>
 
-" Sudo saves the file (useful for handling the permission-denied error)
-command! SudoW execute 'w !sudo tee % > /dev/null' <bar> edit!
-
 """ Misc
 augroup last_read_point
 	autocmd!
@@ -340,6 +337,7 @@ let g:NERDCommentEmptyLines = 0
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 nmap <leader>/ <plug>NERDCommenterToggle<CR>
+imap <leader>/ <plug>NERDCommenterComment<CR>
 
 """ Undotree
 if has('persistent_undo')
