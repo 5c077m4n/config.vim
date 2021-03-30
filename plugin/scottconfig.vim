@@ -332,7 +332,7 @@ let g:NERDCommentEmptyLines = 0
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDToggleCheckAllLines = 1
 nmap <leader>/ <plug>NERDCommenterToggle<CR>
-imap <leader>/ <plug>NERDCommenterComment<CR>
+vmap <leader>/ <plug>NERDCommenterComment<CR>
 
 """ Undotree
 if has('persistent_undo')
