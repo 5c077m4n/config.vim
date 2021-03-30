@@ -40,12 +40,7 @@ else
 endif
 
 " Make vim cwd the file that is being edited
-autocmd BufEnter * silent! lcd %:p:h
-" Add rust filetype
-augroup filetype_rust
-    autocmd!
-    autocmd BufReadPost *.rs setlocal filetype=rust
-augroup END
+"autocmd BufEnter * silent! lcd %:p:h
 
 syntax on
 
