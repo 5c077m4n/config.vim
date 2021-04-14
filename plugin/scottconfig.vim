@@ -350,6 +350,7 @@ nnoremap <silent> <leader>fhb :History<CR>
 nnoremap <silent> <leader>fhs :History/<CR>
 nnoremap <silent> <leader>fc :Commits<CR>
 nnoremap <silent> <leader>fbc :BCommits<CR>
+nnoremap <silent> <leader>fy :call scottconfig#registers#show_in_fzf('<bang>' ==# '!')<CR>
 
 """ Syntastic
 let g:syntastic_always_populate_loc_list = 1
