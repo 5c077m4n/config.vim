@@ -284,6 +284,8 @@ catch /^Vim\%((\a\+)\)\=:E185/
 endtry
 
 """ GitFugitive
+nnoremap <leader>gm :NERDTreeClose<CR>:G mergetool<CR>
+
 nnoremap <leader>gdd :NERDTreeClose<CR>:Gvdiffsplit!<CR>
 nnoremap <leader>gdh :diffget //2<CR>
 nnoremap <leader>gdl :diffget //3<CR>
