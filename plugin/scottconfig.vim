@@ -283,6 +283,9 @@ catch /^Vim\%((\a\+)\)\=:E185/
 	set background=dark
 endtry
 
+""" GitFugitive
+nnoremap <leader>gm :NERDTreeClose<CR>:Git mergetool<CR>
+
 """ Airline
 let g:airline_extensions = ['branch', 'tabline', 'coc', 'fzf', 'undotree']
 let g:airline_theme='dark_minimal'
