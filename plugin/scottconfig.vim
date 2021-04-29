@@ -300,6 +300,9 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 """ Coc
 let g:coc_global_extensions = scottconfig#coc#GetExtensions()
+nnoremap <silent> <leader>ca :CocList diagnostics<CR>
+nnoremap <silent> <leader>cc :CocList commands<CR>
+nnoremap <silent> <leader>cr :CocRestart<CR>
 
 """ Ranger
 if exists(':Ranger')
