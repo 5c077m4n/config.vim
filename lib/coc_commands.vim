@@ -12,9 +12,9 @@ nmap <buffer> <leader>rn <Plug>(coc-rename)
 xmap <buffer> <leader>qr <Plug>(coc-format-selected)
 nmap <buffer> <leader>qr <Plug>(coc-format-selected)
 
-nnoremap <silent> <leader>ca :CocList diagnostics<CR>
-nnoremap <silent> <leader>cc :CocList commands<CR>
-nnoremap <silent> <leader>cr :CocRestart<CR>
+nnoremap <buffer> <silent> <leader>ca :CocList diagnostics<CR>
+nnoremap <buffer> <silent> <leader>cc :CocList commands<CR>
+nnoremap <buffer> <silent> <leader>cr :CocRestart<CR>
 
 " format current buffer.
 command! -nargs=0 Format :call CocAction('format')
