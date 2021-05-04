@@ -88,6 +88,10 @@ if $COLORTERM == 'gnome-terminal'
 	set t_Co=256
 endif
 
+if !exists('$TERM')
+	let $TERM='xterm-256color'
+endif
+
 " Set extra options when running in GUI mode
 if has('gui_running')
 	set guioptions-=T
