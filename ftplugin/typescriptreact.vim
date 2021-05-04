@@ -4,7 +4,7 @@ if !exists("b:did_ftplugin")
 	let b:BuffLeave='syntax sync clear'
 	"setlocal foldmethod=syntax
 
-	runtime! lib/coc_commands.vim lib/term_debug.vim
+	runtime! lib/term_debug.vim
 endif
 
 " To beat the typescript-vim plug
