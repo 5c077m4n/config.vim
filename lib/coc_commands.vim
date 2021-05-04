@@ -14,6 +14,7 @@ nmap <buffer> <leader>qr <Plug>(coc-format-selected)
 
 " format current buffer.
 command! -nargs=0 Format :call CocAction('format')
+command! -nargs=0 F :call CocAction('format')
 " fold current buffer.
 command! -nargs=? Fold :call CocAction('fold', <f-args>)
 " organize imports of the current buffer.
