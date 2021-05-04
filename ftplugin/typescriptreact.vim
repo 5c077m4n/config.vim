@@ -6,3 +6,6 @@ if !exists("b:did_ftplugin")
 
 	runtime! lib/coc_commands.vim lib/term_debug.vim
 endif
+
+" To beat the typescript-vim plug
+runtime! lib/coc_commands.vim
