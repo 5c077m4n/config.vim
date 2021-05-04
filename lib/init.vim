@@ -11,13 +11,13 @@ endfunction
 call plug#begin(<SID>get_plug_install_dir())
 Plug 'neoclide/coc.nvim', { 'branch': 'release', 'do': { -> coc#util#install() } }
 Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-fugitive'
+Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
 Plug 'PhilRunninger/nerdtree-visual-selection'
 Plug 'PhilRunninger/nerdtree-buffer-ops'
-Plug 'scrooloose/nerdcommenter'
 Plug 'junegunn/fzf.vim'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-Plug 'tpope/vim-fugitive'
 Plug 'scrooloose/syntastic'
 Plug 'flazz/vim-colorschemes'
 Plug 'vim-airline/vim-airline'
@@ -29,6 +29,9 @@ Plug 'Shougo/vimproc.vim', { 'do': 'make' }
 if !has('gui_macvim')
 	Plug 'francoiscabrol/ranger.vim'
 endif
+
+Plug 'leafgarland/typescript-vim'
+Plug 'peitalin/vim-jsx-typescript'
 
 Plug 'townk/vim-autoclose'
 Plug 'tpope/vim-surround'
