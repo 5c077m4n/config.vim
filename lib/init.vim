@@ -30,9 +30,6 @@ if !has('gui_macvim')
 	Plug 'francoiscabrol/ranger.vim'
 endif
 
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-
 Plug 'townk/vim-autoclose'
 Plug 'tpope/vim-surround'
 Plug 'itspriddle/vim-shellcheck'
