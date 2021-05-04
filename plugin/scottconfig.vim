@@ -300,9 +300,6 @@ let g:airline#extensions#tabline#formatter = 'unique_tail_improved'
 
 """ Coc
 let g:coc_global_extensions = scottconfig#coc#GetExtensions()
-nnoremap <silent> <leader>ca :CocList diagnostics<CR>
-nnoremap <silent> <leader>cc :CocList commands<CR>
-nnoremap <silent> <leader>cr :CocRestart<CR>
 
 """ Ranger
 if exists(':Ranger')
@@ -351,17 +348,7 @@ if has('persistent_undo')
 endif
 
 """ FZF
-let g:fzf_action = { 'ctrl-t': 'tab split', 'ctrl-s': 'split', 'ctrl-h': 'vsplit' }
-nnoremap <silent> <leader>ffl :Files<CR>
-nnoremap <silent> <leader>fft :Filetypes<CR>
-nnoremap <silent> <leader>fsr :Rg<CR>
-nnoremap <silent> <leader>fsa :Ag<CR>
-nnoremap <silent> <leader>fm :Marks<CR>
-nnoremap <silent> <leader>fhb :History<CR>
-nnoremap <silent> <leader>fhs :History/<CR>
-nnoremap <silent> <leader>fc :Commits<CR>
-nnoremap <silent> <leader>fbc :BCommits<CR>
-nnoremap <silent> <leader>fy :call scottconfig#registers#show_in_fzf('<bang>' ==# '!')<CR>
+runtime! lib/fzf_config.vim
 
 """ Syntastic
 let g:syntastic_always_populate_loc_list = 1
