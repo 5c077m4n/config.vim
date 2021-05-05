@@ -20,7 +20,6 @@ function! scottconfig#coc#GetExtensions()
 					\ 'coc-jest',
 					\ 'coc-react-refactor',
 					\ 'coc-sql',
-					\ 'coc-graphql',
 					\]
 	elseif &filetype ==? 'html'
 		let l:coc_ext += ['coc-html', 'coc-css']
