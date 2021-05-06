@@ -1,7 +1,7 @@
 " Roee's default vim/nvim/gvim config
 " Maintainer: Roee Shapira <ro33.sha@gmail.com>
 
-if exists('g:scottconfig_disable') | finish | endif
+if get(g:, 'scottconfig__disable') | finish | endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -12,7 +12,6 @@ if &compatible
 	set nocompatible
 endif
 
-" TextEdit might fail if hidden is not set.
 set hidden
 
 " Some servers have issues with backup files, see #649.
@@ -36,16 +35,20 @@ else
   set signcolumn=yes
 endif
 
+set modifiable
+
 let g:mapleader = "\<Space>"
 let g:maplocalleader = ','
 
-" Make vim cwd the file that is being edited
-"autocmd BufEnter * silent! lcd %:p:h
+" Make vim cd to the file that is being edited
+if get(g:, 'scottconfig__enble_cd_on_file_enter')
+	autocmd BufEnter * silent! lcd %:p:h
+endif
 
 syntax on
 
-if exists('g:scottconfig_enable_onmi')
-	" Omnifunc
+" Omnifunc
+if get(g:, 'scottconfig__enable_onmi')
 	set omnifunc=syntaxcomplete#Complete
 	set completeopt=longest,menuone
 	" When the menu appears, the <Down> key will be simulated
@@ -88,8 +91,7 @@ augroup autoread_on_buffer_change
 	autocmd FocusGained,BufEnter * :checktime
 augroup END
 " Python3 bin path
-let g:python3_host_prog='/usr/local/bin/python3'
-set modifiable
+let g:python3_host_prog=system('which python3')
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -128,7 +130,9 @@ set ffs=unix,dos,mac
 set so=7
 
 " Set language to english
-let $LANG='en'
+if !exists('$LANG')
+	let $LANG='en'
+endif
 set langmenu=en
 
 " Turn on the Wild menu
