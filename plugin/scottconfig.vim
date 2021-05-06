@@ -91,7 +91,7 @@ augroup autoread_on_buffer_change
 	autocmd FocusGained,BufEnter * :checktime
 augroup END
 " Python3 bin path
-let g:python3_host_prog=system('which python3')
+let g:python3_host_prog=trim(system('which python3'))
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
