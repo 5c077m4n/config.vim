@@ -1,7 +1,7 @@
 " Roee's default vim/nvim/gvim config
 " Maintainer: Roee Shapira <ro33.sha@gmail.com>
 
-if exists('g:disable_scott_config') | finish | endif
+if exists('g:scottconfig_disable') | finish | endif
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -36,17 +36,29 @@ else
   set signcolumn=yes
 endif
 
+let g:mapleader = "\<Space>"
+let g:maplocalleader = ','
+
 " Make vim cwd the file that is being edited
 "autocmd BufEnter * silent! lcd %:p:h
 
 syntax on
 
+if exists('g:scottconfig_enable_onmi')
+	" Omnifunc
+	set omnifunc=syntaxcomplete#Complete
+	set completeopt=longest,menuone
+	" When the menu appears, the <Down> key will be simulated
+	inoremap <expr> <C-n> pumvisible() ? '<C-n>' : '<C-n><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+	" Simulates <C-X><C-O> to bring up the omni completion menu,
+	" then it simulates <C-N><C-P> to remove the longest common text,
+	" and finally it simulates <Down> again to keep a match highlighted
+	inoremap <expr> <M-,> pumvisible() ? '<C-n>' : '<C-x><C-o><C-n><C-p><C-r>=pumvisible() ? "\<lt>Down>" : ""<CR>'
+endif
+
 " Line numbering
 set number
 set relativenumber
-
-let g:mapleader = "\<Space>"
-let g:maplocalleader = ','
 
 nnoremap <expr> <leader>1 ":edit ".scottconfig#utils#GetVimConfigPath()."<CR>"
 nnoremap <expr> <leader>2 ":source ".scottconfig#utils#GetVimConfigPath()."<CR>"
@@ -65,17 +77,18 @@ augroup END
 if has('mouse')
 	set mouse=i
 endif
-" copy to clipboard where pressing ctrl-c in visual mode
+" Copy to clipboard where pressing ctrl-c in visual mode
 vnoremap <C-c> "+y
-" paste from clipboard where pressing ctrl-v in insert mode
+" Paste from clipboard where pressing ctrl-v in insert mode
 inoremap <C-v> <C-o>"+p
 
+" Trigger autoread when changing buffers inside while inside vim
 augroup autoread_on_buffer_change
 	autocmd!
-	" Trigger autoread when changing buffers inside while inside vim
 	autocmd FocusGained,BufEnter * :checktime
 augroup END
-
+" Python3 bin path
+let g:python3_host_prog='/usr/local/bin/python3'
 set modifiable
 
 
