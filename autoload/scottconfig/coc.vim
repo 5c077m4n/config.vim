@@ -39,6 +39,8 @@ function! scottconfig#coc#GetExtensions()
 		let l:coc_ext += ['coc-svg']
 	elseif &filetype ==? 'vim'
 		let l:coc_ext += ['coc-vimlsp']
+	elseif &filetype ==? 'lua'
+		let l:coc_ext += ['coc-lua']
 	endif
 
 	return l:coc_ext
