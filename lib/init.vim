@@ -34,6 +34,12 @@ endif
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 
+if has('nvim') || has('patch-8.0.902')
+	Plug 'mhinz/vim-signify'
+else
+	Plug 'mhinz/vim-signify', { 'branch': 'legacy' }
+endif
+
 Plug 'townk/vim-autoclose'
 Plug 'tpope/vim-surround'
 Plug 'itspriddle/vim-shellcheck'
