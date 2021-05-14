@@ -1,4 +1,7 @@
-autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup highlight
+	autocmd!
+	autocmd CursorHold * silent call CocActionAsync('highlight')
+augroup END
 
 nmap <buffer> <silent> g[ <Plug>(coc-diagnostic-prev)
 nmap <buffer> <silent> g] <Plug>(coc-diagnostic-next)
